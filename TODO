@@ -1,8 +1,7 @@
+- rdoc
+- gemcutter
 
-- deploy
-  - rdoc
-  - github
-  - gemcutter
+
 
 == Version X
 
