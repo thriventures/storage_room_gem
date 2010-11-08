@@ -1,0 +1,7 @@
+{
+    "error": {
+        "message": ["Title can't be empty"],
+        "code": 422,
+        "@type": "Error"
+    }
+}

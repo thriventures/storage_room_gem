@@ -1,0 +1,10 @@
+
+- deploy
+  - rdoc
+  - github
+  - gemcutter
+
+== Version X
+
+- have collection fields
+- executable/cli

@@ -1,0 +1,51 @@
+== StorageRoom Gem
+
+This gem provides read and write access to the StorageRoom API (http://storageroomapp.com). It has an ActiveRecord/ActiveModel like interface.
+
+
+== Installation
+
+To install the library execute:
+
+  sudo gem install storage_room
+
+
+== Basic Usage
+
+This is a walkthrough with all steps you need to setup a devise resource, including model, migration, route files, and optional configuration.
+  
+  StorageRoom.authenticate(YOUR_ACCOUNT_ID, YOUR_APPLICATION_API_KEY)
+  collection = StorageRoom::Collection.find('guidebooks')
+  
+  resources = collection.resources
+  resource = resources.items.first
+  
+  resource[:name] = 'Foobar'
+  
+  if resource.save
+    puts "Resource saved."
+  else
+    puts "Could not save Resource: #{resource.errors.join(', )}"
+  end
+
+== More Examples
+
+See the examples folder.
+
+== TODO
+
+Please refer to TODO file.
+
+== Maintainers
+
+* Sascha Konietzke 
+
+== Bugs and Feedback
+
+If you discover any bugs, please create an issue on GitHub.
+
+http://github.com/thriventures/storage_room_gem/issues
+
+== License
+
+MIT License. Copyright 2010 Thriventures UG (haftungsbeschränkt) - http://www.thriventures.com
