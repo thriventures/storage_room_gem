@@ -1,17 +1,15 @@
 module StorageRoom
+  # A container object that contains many models (collections or resources)
   class Array < Base
     attr_accessor :items
     
-    class << self      
-
-    end
-    
-    
+        
     def initialize(attributes = {})
       self.items = []
       super
     end
     
+    # Set the array with the attributes from the API
     def set_from_api(attributes)
       super(attributes)
                   
@@ -19,11 +17,13 @@ module StorageRoom
       attributes.delete('items')  
     end
     
+    # Reset the Array to its default state with all attributes unset
     def reset!
       super
       @items = []
     end
     
+    # Replaces the objects content with the next page of the array if a next page exists
     def load_next_page!
       if self[:@next_page].present?
         reload(self[:@next_page]) 

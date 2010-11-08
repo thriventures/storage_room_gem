@@ -28,6 +28,8 @@ This is a walkthrough with all steps you need to setup a devise resource, includ
     puts "Could not save Resource: #{resource.errors.join(', )}"
   end
 
+You can find the documentation at http://rdoc.info/github/thriventures/storage_room_gem.
+
 == More Examples
 
 See the examples folder.

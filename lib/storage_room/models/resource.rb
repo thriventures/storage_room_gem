@@ -1,35 +1,37 @@
 module StorageRoom
   class Resource < Model
     class << self                  
-      def index_path
+      def index_path # :nodoc:
         "/collections/#{collection_id}/resources" 
       end
       
-      def show_path(resource_id)
+      def show_path(resource_id) # :nodoc:
         "#{index_path}/#{resource_id}"
       end
       
-      def collection_path
+      def collection_path # :nodoc:
         "/collections/#{collection_id}"
       end
       
-      def collection_id
+      def collection_id # :nodoc:
         self.name.gsub('StorageRoom::', '').tableize
       end
       
-      def json_name
+      def json_name # :nodoc:
         'resource'
       end
       
-      def search_path(parameters = {})
+      def search_path(parameters = {}) # :nodoc:
         parameters.present? ? "#{index_path}?#{parameters.to_query}" : index_path
       end
       
+      # Search for objects with specific parameters
       def search(parameters = {})
         Array.load(search_path(parameters))
       end
     end
     
+    # Sets a resource with a hash from the API.
     def set_from_api(attributes)
       super(attributes)
                   
@@ -44,6 +46,7 @@ module StorageRoom
       self.attributes
     end
     
+    # The collection of a resource
     def collection
       Collection.load(self[:@collection_url] || self.class.collection_path)
     end
