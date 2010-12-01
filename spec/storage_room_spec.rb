@@ -91,9 +91,9 @@ describe StorageRoom do
     end
     
     it "should get StorageRoom class" do
-      klass = StorageRoom.class_for_name('Resource')
+      klass = StorageRoom.class_for_name('Entry')
       klass.should be_an_instance_of(Class)
-      klass.should == StorageRoom::Resource
+      klass.should == StorageRoom::Entry
     end
   end
 end

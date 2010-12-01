@@ -26,13 +26,13 @@ Gem::Specification.new do |s|
      "TODO",
      "VERSION",
      "examples/authentication.rb",
-     "examples/create_resource.rb",
-     "examples/destroy_resource.rb",
+     "examples/create_entry.rb",
+     "examples/destroy_entry.rb",
      "examples/get_collections.rb",
      "examples/guidebooks.csv",
      "examples/import_csv.rb",
-     "examples/search_resources.rb",
-     "examples/update_resource.rb",
+     "examples/search_entries.rb",
+     "examples/update_entry.rb",
      "lib/storage_room.rb",
      "lib/storage_room/array.rb",
      "lib/storage_room/attributes.rb",
@@ -43,7 +43,7 @@ Gem::Specification.new do |s|
      "lib/storage_room/field.rb",
      "lib/storage_room/model.rb",
      "lib/storage_room/models/collection.rb",
-     "lib/storage_room/models/resource.rb",
+     "lib/storage_room/models/entry.rb",
      "spec/fixtures/collection.json",
      "spec/fixtures/collections.json",
      "spec/fixtures/validation_error.json",
@@ -57,7 +57,7 @@ Gem::Specification.new do |s|
      "spec/storage_room/field_spec.rb",
      "spec/storage_room/model_spec.rb",
      "spec/storage_room/models/collection_spec.rb",
-     "spec/storage_room/models/resource_spec.rb",
+     "spec/storage_room/models/entry_spec.rb",
      "spec/storage_room_spec.rb",
      "storage_room.gemspec"
   ]
@@ -77,15 +77,15 @@ Gem::Specification.new do |s|
      "spec/storage_room/field_spec.rb",
      "spec/storage_room/model_spec.rb",
      "spec/storage_room/models/collection_spec.rb",
-     "spec/storage_room/models/resource_spec.rb",
+     "spec/storage_room/models/entry_spec.rb",
      "spec/storage_room_spec.rb",
      "examples/authentication.rb",
-     "examples/create_resource.rb",
-     "examples/destroy_resource.rb",
+     "examples/create_entry.rb",
+     "examples/destroy_entry.rb",
      "examples/get_collections.rb",
      "examples/import_csv.rb",
-     "examples/search_resources.rb",
-     "examples/update_resource.rb"
+     "examples/search_entries.rb",
+     "examples/update_entry.rb"
   ]
 
   if s.respond_to? :specification_version then

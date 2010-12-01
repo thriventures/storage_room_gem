@@ -6,6 +6,6 @@ collections = StorageRoom::Collection.all
 
 puts "Collections:"
 
-collections.items.each do |collection|
+collections.resources.each do |collection|
   puts "- #{collection[:name]}"
 end

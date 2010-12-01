@@ -15,9 +15,9 @@ describe StorageRoom::Collection do
         end
       end
       
-      describe "#resources_path" do
+      describe "#entries_path" do
         it "should be defined" do
-          StorageRoom::Collection.resources_path(1).should == '/collections/1/resources'
+          StorageRoom::Collection.entries_path(1).should == '/collections/1/entries'
         end
       end
       
@@ -35,17 +35,17 @@ describe StorageRoom::Collection do
       @collection = StorageRoom::Collection.new
     end
     
-    describe "#resources" do
+    describe "#entries" do
       it "should load" do
         StorageRoom::Array.should_receive(:load)
-        @collection.resources
+        @collection.entries
       end
     end
     
-    describe "#resource_class" do
+    describe "#entry_class" do
       it "should return class" do
         @collection[:identifier] = 'guidebook'
-        klass = @collection.resource_class
+        klass = @collection.entry_class
         klass.should == Guidebook
       end
     end

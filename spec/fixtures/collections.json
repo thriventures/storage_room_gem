@@ -2,10 +2,10 @@
     "collections": {
         "@type": "Array",
         "@url": "http://api.storageroomapp.com/accounts/4c8fd48542507175aa00002f/collections",
-        "items": [{
+        "resources": [{
             "name": "Guidebooks",
             "@updated_at": "2010-11-05T12:55:04Z",
-            "@resources_url": "http://api.storageroomapp.com/accounts/4c8fd48542507175aa00002f/collections/guidebooks/resources",
+            "@entries_url": "http://api.storageroomapp.com/accounts/4c8fd48542507175aa00002f/collections/guidebooks/entries",
             "@created_at": "2010-09-14T20:01:13Z",
             "fields": [{
                 "name": "Title",

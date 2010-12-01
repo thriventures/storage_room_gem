@@ -1,12 +1,12 @@
 module StorageRoom
-  class Resource < Model
+  class Entry < Model
     class << self                  
       def index_path # :nodoc:
-        "/collections/#{collection_id}/resources" 
+        "/collections/#{collection_id}/entries" 
       end
       
-      def show_path(resource_id) # :nodoc:
-        "#{index_path}/#{resource_id}"
+      def show_path(entry_id) # :nodoc:
+        "#{index_path}/#{entry_id}"
       end
       
       def collection_path # :nodoc:
@@ -18,7 +18,7 @@ module StorageRoom
       end
       
       def json_name # :nodoc:
-        'resource'
+        'entry'
       end
       
       def search_path(parameters = {}) # :nodoc:
@@ -31,7 +31,7 @@ module StorageRoom
       end
     end
     
-    # Sets a resource with a hash from the API.
+    # Sets a entry with a hash from the API.
     def set_from_api(attributes)
       super(attributes)
                   
@@ -46,7 +46,7 @@ module StorageRoom
       self.attributes
     end
     
-    # The collection of a resource
+    # The collection of a entry
     def collection
       Collection.load(self[:@collection_url] || self.class.collection_path)
     end

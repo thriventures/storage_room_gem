@@ -4,8 +4,8 @@ require File.dirname(__FILE__) + '/authentication'
 
 collection = StorageRoom::Collection.find('guidebooks')
 
-resource = collection.resources.items.first
+entry = collection.entries.resources.first
 
-resource.destroy
+entry.destroy
 
-puts "Destroyed #{resource[:name]}"
+puts "Destroyed #{entry[:name]}"

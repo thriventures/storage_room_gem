@@ -154,11 +154,11 @@ describe StorageRoom::Model do
 
      describe "#as_json" do
        it "should return hash without meta data" do
-         resource = StorageRoom::Resource.new(:field => 1, :@attr => 2)
-         hash = resource.as_json
+         entry = StorageRoom::Entry.new(:field => 1, :@attr => 2)
+         hash = entry.as_json
 
-         hash['resource'][:field].should == 1
-         hash['resource'][:@attr].should_not be_present
+         hash['entry'][:field].should == 1
+         hash['entry'][:@attr].should_not be_present
        end
      end
 
@@ -178,7 +178,7 @@ describe StorageRoom::Model do
          klass = StorageRoom.class_for_name('Guidebook')
          guidebook = klass.new
 
-         stub_request(:post, stub_url('/collections/guidebooks/resources')).to_return(:body => fixture_file('collection.json'), :status => 200)
+         stub_request(:post, stub_url('/collections/guidebooks/entries')).to_return(:body => fixture_file('collection.json'), :status => 200)
 
          guidebook.create
          guidebook[:name].should == 'Guidebooks'
@@ -188,7 +188,7 @@ describe StorageRoom::Model do
          klass = StorageRoom.class_for_name('Guidebook')
          guidebook = klass.new
 
-         stub_request(:post, stub_url('/collections/guidebooks/resources')).to_return(:body => fixture_file('validation_error.json'), :status => 422)
+         stub_request(:post, stub_url('/collections/guidebooks/entries')).to_return(:body => fixture_file('validation_error.json'), :status => 422)
 
          guidebook.create
          guidebook[:name].should be_nil

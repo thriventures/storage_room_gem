@@ -4,9 +4,9 @@ module StorageRoom
     class << self
       # Create a new model with the passed attributes
       def create(attributes={})
-        resource = new(attributes)
-        resource.create
-        resource
+        entry = new(attributes)
+        entry.create
+        entry
       end
       
       # Get all models (could be paginated)

@@ -17,10 +17,10 @@ module StorageRoom
   autoload :Model,          'storage_room/model'
   autoload :Array,          'storage_room/array'
   autoload :Field,          'storage_room/field'
-  autoload :Embedded,          'storage_room/embedded'
+  autoload :Embedded,       'storage_room/embedded'
   
   autoload :Collection,     'storage_room/models/collection'
-  autoload :Resource,       'storage_room/models/resource'
+  autoload :Entry,       'storage_room/models/entry'
   
   autoload :File,           'storage_room/embeddeds/file'
   autoload :Location,       'storage_room/embeddeds/location'
@@ -78,7 +78,7 @@ module StorageRoom
       elsif Object.const_defined?(name)
         name.constantize
       else
-        klass = Class.new(Resource) 
+        klass = Class.new(Entry) 
         Object.const_set(name, klass)
         
         klass

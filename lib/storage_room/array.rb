@@ -1,11 +1,11 @@
 module StorageRoom
-  # A container object that contains many models (collections or resources)
+  # A container object that contains many models (collections or entries)
   class Array < Base
-    attr_accessor :items
+    attr_accessor :resources
     
         
     def initialize(attributes = {})
-      self.items = []
+      self.resources = []
       super
     end
     
@@ -13,20 +13,20 @@ module StorageRoom
     def set_from_api(attributes)
       super(attributes)
                   
-      self.items = attributes['items'].map{|item| self.class.create_from_api(item)} # transform hashes to real objects
-      attributes.delete('items')  
+      self.resources = attributes['resources'].map{|item| self.class.create_from_api(item)} # transform hashes to real objects
+      attributes.delete('resources')  
     end
     
     # Reset the Array to its default state with all attributes unset
     def reset!
       super
-      @items = []
+      @resources = []
     end
     
     # Replaces the objects content with the next page of the array if a next page exists
     def load_next_page!
-      if self[:@next_page].present?
-        reload(self[:@next_page]) 
+      if self[:@next_page_url].present?
+        reload(self[:@next_page_url]) 
         true
       else
         false
@@ -35,8 +35,8 @@ module StorageRoom
     
     # Replace the Collection with the privious page of elements if there is one
     def load_previous_page!
-      if self[:@previous_page].present?
-        reload(self[:@previous_page]) 
+      if self[:@previous_page_url].present?
+        reload(self[:@previous_page_url]) 
         true
       else
         false
@@ -51,10 +51,10 @@ module StorageRoom
       end while(args[:reverse] == true ? load_previous_page! : load_next_page!)
     end
     
-    # Iterate over all items with pagination
+    # Iterate over all resources with pagination
     def each_page_each_item(args={})
       self.each_page(args) do |page|
-        page.items.each do |item|
+        page.resources.each do |item|
           yield(item)
         end
       end

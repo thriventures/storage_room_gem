@@ -12,20 +12,20 @@ To install the library execute:
 
 == Basic Usage
 
-This is a walkthrough with all steps you need to setup a devise resource, including model, migration, route files, and optional configuration.
+This is a walkthrough with all steps you need to setup a devise entry, including model, migration, route files, and optional configuration.
   
   StorageRoom.authenticate(YOUR_ACCOUNT_ID, YOUR_APPLICATION_API_KEY)
   collection = StorageRoom::Collection.find('guidebooks')
   
-  resources = collection.resources
-  resource = resources.items.first
+  entries = collection.entries
+  entry = entries.resources.first
   
-  resource[:name] = 'Foobar'
+  entry[:name] = 'Foobar'
   
-  if resource.save
-    puts "Resource saved."
+  if entry.save
+    puts "Entry saved."
   else
-    puts "Could not save Resource: #{resource.errors.join(', )}"
+    puts "Could not save Entry: #{entry.errors.join(', )}"
   end
 
 You can find the documentation at http://rdoc.info/github/thriventures/storage_room_gem.

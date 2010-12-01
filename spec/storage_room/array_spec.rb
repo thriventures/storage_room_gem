@@ -17,14 +17,14 @@ describe StorageRoom::Array do
     end
     
     describe "#initialize" do
-      it "should set items" do
-        @array.items.should == []
+      it "should set resources" do
+        @array.resources.should == []
       end
     end
     
     describe "#set_from_api" do
       before(:each) do
-        @hash = {'@page' => 1, 'items' => [{'one' => 1, '@type' => 'Guidebook'}, {'two' => 2, '@type' => 'Guidebook'}]}
+        @hash = {'@page' => 1, 'resources' => [{'one' => 1, '@type' => 'Guidebook'}, {'two' => 2, '@type' => 'Guidebook'}]}
         @array.set_from_api(@hash)
       end
       
@@ -32,19 +32,19 @@ describe StorageRoom::Array do
         @array['@page'].should == 1
       end
       
-      it "should set items" do
-        @array.items.should have(2).items
-        @array.items[0].should be_an_instance_of(Guidebook)
-        @array.items[0][:one].should == 1
-        @array.items[1].should be_an_instance_of(Guidebook)        
-        @array.items[1][:two].should == 2
+      it "should set resources" do
+        @array.resources.should have(2).items
+        @array.resources[0].should be_an_instance_of(Guidebook)
+        @array.resources[0][:one].should == 1
+        @array.resources[1].should be_an_instance_of(Guidebook)        
+        @array.resources[1][:two].should == 2
       end
     end
     
     describe "#reset!" do
       it "should reset" do
         @array.reset!
-        @array.items.should == []
+        @array.resources.should == []
       end
     end
     
@@ -54,7 +54,7 @@ describe StorageRoom::Array do
       end
       
       it "should load when present" do
-        @array[:@next_page] = "url"
+        @array[:@next_page_url] = "url"
         @array.stub(:reload)
         @array.should_receive(:reload)
         @array.load_next_page!.should be_true
@@ -67,7 +67,7 @@ describe StorageRoom::Array do
       end
       
       it "should load when present" do
-        @array[:@previous_page] = "url"
+        @array[:@previous_page_url] = "url"
         @array.stub(:reload)
         @array.should_receive(:reload)
         @array.load_previous_page!.should be_true

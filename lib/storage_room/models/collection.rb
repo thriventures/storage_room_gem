@@ -10,8 +10,8 @@ module StorageRoom
         "#{index_path}/#{collection_id}"
       end
       
-      def resources_path(collection_id) # :nodoc:
-        "#{show_path(collection_id)}/resources"
+      def entries_path(collection_id) # :nodoc:
+        "#{show_path(collection_id)}/entries"
       end
       
       def json_name # :nodoc:
@@ -19,13 +19,13 @@ module StorageRoom
       end
     end
     
-    # Load all the resources of a collection
-    def resources
-      Array.load(self[:@resources_url])
+    # Load all the entries of a collection
+    def entries
+      Array.load(self[:@entries_url])
     end
     
     # The class of the collection's objects
-    def resource_class
+    def entry_class
       StorageRoom.class_for_name(self[:identifier].classify)
     end
 

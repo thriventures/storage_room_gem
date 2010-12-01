@@ -60,7 +60,7 @@ describe StorageRoom::Base do
       
       describe "#create_from_api" do
         it "should create array" do
-          hash = {'@type' => 'Array', 'items' => []}
+          hash = {'@type' => 'Array', 'resources' => []}
           result = StorageRoom::Base.create_from_api(hash)
           result.should be_an_instance_of(StorageRoom::Array)
           result[:@type].should == 'Array'
@@ -73,7 +73,7 @@ describe StorageRoom::Base do
           result[:name].should == 'Guidebook'
         end
         
-        it "should create resource" do
+        it "should create entry" do
           hash = {'@type' => 'Guidebook', 'title' => 'Something'}
           result = StorageRoom::Base.create_from_api(hash)
           result.should be_an_instance_of(Guidebook)
