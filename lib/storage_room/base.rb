@@ -34,7 +34,7 @@ module StorageRoom
           when 'Array' then Array.new
           when 'Collection' then Collection.new
           else
-            StorageRoom.class_for_name(type).new
+            StorageRoom.class_for_name(type.classify).new
         end
         
         object.set_from_api(hash)
