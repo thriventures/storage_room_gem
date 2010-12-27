@@ -4,7 +4,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 begin; require 'rubygems'; rescue LoadError; end
 
 require 'httparty'
-require 'activesupport' 
+require 'active_support/all' 
 
 
 module StorageRoom
