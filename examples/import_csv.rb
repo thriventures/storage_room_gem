@@ -11,10 +11,10 @@ lines.slice!(0) # remove header line
 klass = StorageRoom.class_for_name('Guidebook')
 
 lines.each do |row|
-  guidebook = klass.new(:name => row[0], :price => row[1].to_f)
+  guidebook = klass.new(:title => row[0], :price => row[1].to_f)
 
   if guidebook.save
-    puts "Guidebook saved: #{guidebook[:name]}, #{guidebook[:price]}"
+    puts "Guidebook saved: #{guidebook[:title]}, #{guidebook[:price]}"
   else
     puts "Guidebook could not be saved: #{guidebook.errors.join(', ')}"
   end

@@ -1,6 +1,7 @@
 require File.dirname(__FILE__) + '/../lib/storage_room'
 
-ACCOUNT_ID = '4c8fd48542507175aa00002f' # your account id
-APPLICATION_API_KEY = '43ruv6DDcNYlPZ5xH7en' # your application's API key with read/write access
+ACCOUNT_ID = '4cef9a8c425071fa6900002f' # your account id
+APPLICATION_API_KEY = 'c499kx9L6aBfvJlvSKbF' # your application's API key with read/write access
 
 StorageRoom.authenticate(ACCOUNT_ID, APPLICATION_API_KEY)
+StorageRoom.server = "api.lvh.me:2999"

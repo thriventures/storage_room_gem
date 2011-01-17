@@ -4,10 +4,10 @@ require File.dirname(__FILE__) + '/authentication'
 
 collection = StorageRoom::Collection.find('guidebooks')
 
-entries = collection.entry_class.search(:name => 'Bar')
+entries = collection.entry_class.search(:title => 'Name 2')
 
-puts "Entries with name 'Bar':"
+puts "Entries with title 'Name 2':"
 
 entries.resources.each do |entry|
-  puts "- #{entry[:name]}"
+  puts "- #{entry[:title]}"
 end

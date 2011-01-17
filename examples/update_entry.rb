@@ -6,7 +6,7 @@ collection = StorageRoom::Collection.find('guidebooks')
 
 entry = collection.entries.resources.first
 
-entry[:name] = 'Foobar'
+entry[:title] = 'Foobar'
 
 if entry.save
   puts "Entry saved"
