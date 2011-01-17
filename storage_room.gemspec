@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{storage_room}
-  s.version = "0.1.3"
+  s.version = "0.1.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sascha Konietzke"]
-  s.date = %q{2010-12-27}
+  s.date = %q{2011-01-17}
   s.description = %q{StorageRoom is a CMS system for Mobile Applications (iPhone, Android, BlackBerry, ...). This library gives you an ActiveModel-like interface to your data.}
   s.email = %q{sascha@thriventures.com}
   s.extra_rdoc_files = [
