@@ -58,6 +58,10 @@ module StorageRoom
     def url
       self[:@url]
     end
-
+    
+    def version
+      self[:@version]
+    end
+    
   end
 end

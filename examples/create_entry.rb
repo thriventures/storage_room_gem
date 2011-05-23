@@ -2,7 +2,7 @@
 
 require File.dirname(__FILE__) + '/authentication'
 
-# create a entry without fetching the collection
+# create an entry without fetching the collection
 klass = StorageRoom.class_for_name('Guidebook')
 entry1 = klass.new(:title => 'Foo', :price => 1.23)
 
@@ -13,7 +13,7 @@ else
 end
 
 # fetch the collection first
-collection = StorageRoom::Collection.find('guidebooks')
+collection = StorageRoom::Collection.find('4d960916ba05617333000005')
 
 entry2 = collection.entry_class.new(:title => 'Bar', :price => 2.23)
 

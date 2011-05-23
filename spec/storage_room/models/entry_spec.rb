@@ -9,25 +9,25 @@ describe StorageRoom::Entry do
       
       describe "#show_path" do
         it "should be defined" do
-          Guidebook.show_path(1).should == '/collections/guidebooks/entries/1'
+          Guidebook.show_path(1).should == '/collections/4d960916ba05617333000005/entries/1'
         end
       end
       
       describe "#index_path" do
         it "should be defined" do
-          Guidebook.index_path.should == '/collections/guidebooks/entries'
+          Guidebook.index_path.should == '/collections/4d960916ba05617333000005/entries'
         end
       end
       
       describe "#collection_path" do
         it "should be defined" do
-          Guidebook.collection_path.should == '/collections/guidebooks'
+          Guidebook.collection_path.should == '/collections/4d960916ba05617333000005'
         end
       end
       
       describe "#search_path" do
         it "should be defined" do
-          Guidebook.search_path(:test =>1).should == '/collections/guidebooks/entries?test=1'
+          Guidebook.search_path(:test =>1).should == '/collections/4d960916ba05617333000005/entries?test=1'
         end
       end
       
@@ -40,7 +40,7 @@ describe StorageRoom::Entry do
       
       describe "#collection_id" do
         it "should be defined" do
-          Guidebook.collection_id.should == 'guidebooks'
+          Guidebook.collection_id.should == '4d960916ba05617333000005'
         end
       end
       

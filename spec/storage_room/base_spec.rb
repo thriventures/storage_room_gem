@@ -104,6 +104,14 @@ describe StorageRoom::Base do
       end
     end
     
+    describe "#version" do
+      it "should return version" do
+        @base.version.should be_nil
+        @base[:@version] = 1
+        @base.version.should == 1
+      end
+    end
+    
 
   end
   

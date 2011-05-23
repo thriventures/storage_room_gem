@@ -178,7 +178,7 @@ describe StorageRoom::Model do
          klass = StorageRoom.class_for_name('Guidebook')
          guidebook = klass.new
 
-         stub_request(:post, stub_url('/collections/guidebooks/entries')).to_return(:body => fixture_file('collection.json'), :status => 200)
+         stub_request(:post, stub_url('/collections/4d960916ba05617333000005/entries')).to_return(:body => fixture_file('collection.json'), :status => 200)
 
          guidebook.create
          guidebook[:name].should == 'Guidebooks'
@@ -188,7 +188,7 @@ describe StorageRoom::Model do
          klass = StorageRoom.class_for_name('Guidebook')
          guidebook = klass.new
 
-         stub_request(:post, stub_url('/collections/guidebooks/entries')).to_return(:body => fixture_file('validation_error.json'), :status => 422)
+         stub_request(:post, stub_url('/collections/4d960916ba05617333000005/entries')).to_return(:body => fixture_file('validation_error.json'), :status => 422)
 
          guidebook.create
          guidebook[:name].should be_nil

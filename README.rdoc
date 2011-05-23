@@ -15,7 +15,7 @@ To install the library execute:
 This is a walkthrough with all steps you need to setup a devise entry, including model, migration, route files, and optional configuration.
   
   StorageRoom.authenticate(YOUR_ACCOUNT_ID, YOUR_APPLICATION_API_KEY)
-  collection = StorageRoom::Collection.find('guidebooks')
+  collection = StorageRoom::Collection.find('4d960916ba05617333000005')
   
   entries = collection.entries
   entry = entries.resources.first
