@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{storage_room}
-  s.version = "0.1.4"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sascha Konietzke"]
-  s.date = %q{2011-01-17}
+  s.date = %q{2011-05-23}
   s.description = %q{StorageRoom is a CMS system for Mobile Applications (iPhone, Android, BlackBerry, ...). This library gives you an ActiveModel-like interface to your data.}
   s.email = %q{sascha@thriventures.com}
   s.extra_rdoc_files = [
@@ -64,27 +64,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{StorageRoom API Wrapper (ActiveModel style)}
-  s.test_files = [
-    "examples/authentication.rb",
-    "examples/create_entry.rb",
-    "examples/destroy_entry.rb",
-    "examples/get_collections.rb",
-    "examples/import_csv.rb",
-    "examples/search_entries.rb",
-    "examples/update_entry.rb",
-    "spec/spec_helper.rb",
-    "spec/storage_room/array_spec.rb",
-    "spec/storage_room/attributes_spec.rb",
-    "spec/storage_room/base_spec.rb",
-    "spec/storage_room/embedded_spec.rb",
-    "spec/storage_room/embeddeds/file_spec.rb",
-    "spec/storage_room/embeddeds/location_spec.rb",
-    "spec/storage_room/field_spec.rb",
-    "spec/storage_room/model_spec.rb",
-    "spec/storage_room/models/collection_spec.rb",
-    "spec/storage_room/models/entry_spec.rb",
-    "spec/storage_room_spec.rb"
-  ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
