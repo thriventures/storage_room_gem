@@ -2,12 +2,12 @@
 
 require File.dirname(__FILE__) + '/authentication'
 
-collection = StorageRoom::Collection.find('4d960916ba05617333000005')
+collection = StorageRoom::Collection.find('4ddaf68b4d085d374a000003')
 
-entries = collection.entry_class.search(:title => 'Name 2')
+entries = collection.entry_class.search(:title => 'Hitchhikers Guide to the Galaxy')
 
-puts "Entries with title 'Name 2':"
+puts "Entries with title 'Hitchhikers Guide to the Galaxy':"
 
 entries.resources.each do |entry|
-  puts "- #{entry[:title]}"
+  puts "- #{entry[:title]} : #{entry.url}"
 end

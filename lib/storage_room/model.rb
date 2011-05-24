@@ -97,7 +97,7 @@ module StorageRoom
     end
     
     def as_json(args = {}) # :nodoc:
-      {self.class.json_name => self.attributes.reject{|k, v| self.class.meta_data?(k)}}
+      {self.class.json_name => self.attributes.reject{|k, v| self.class.meta_data?(k) && k.to_s != '@version'}}
     end
     
     # The validation errors that were returned by the server

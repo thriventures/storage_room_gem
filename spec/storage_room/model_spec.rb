@@ -175,20 +175,22 @@ describe StorageRoom::Model do
 
      describe "#create" do
        it "should create" do
-         klass = StorageRoom.class_for_name('Guidebook')
+         collection_path = '/collections/4ddaf68b4d085d374a000003'
+         klass = StorageRoom::Entry.class_with_options('Guidebook', :collection_path => collection_path)
          guidebook = klass.new
 
-         stub_request(:post, stub_url('/collections/4d960916ba05617333000005/entries')).to_return(:body => fixture_file('collection.json'), :status => 200)
+         stub_request(:post, stub_url(klass.index_path)).to_return(:body => fixture_file('collection.json'), :status => 200)
 
          guidebook.create
          guidebook[:name].should == 'Guidebooks'
        end
 
        it "should have errors on validation error" do
-         klass = StorageRoom.class_for_name('Guidebook')
+         collection_path = '/collections/4ddaf68b4d085d374a000003'
+         klass = StorageRoom::Entry.class_with_options('Guidebook', :collection_path => collection_path)
          guidebook = klass.new
 
-         stub_request(:post, stub_url('/collections/4d960916ba05617333000005/entries')).to_return(:body => fixture_file('validation_error.json'), :status => 422)
+         stub_request(:post, stub_url('/collections/4ddaf68b4d085d374a000003/entries')).to_return(:body => fixture_file('validation_error.json'), :status => 422)
 
          guidebook.create
          guidebook[:name].should be_nil

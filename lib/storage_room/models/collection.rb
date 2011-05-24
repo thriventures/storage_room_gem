@@ -26,7 +26,7 @@ module StorageRoom
     
     # The class of the collection's objects
     def entry_class
-      StorageRoom.class_for_name(self[:identifier].classify)
+      StorageRoom::Entry.class_with_options(self[:name].classify, :collection_path => self.url)
     end
 
     

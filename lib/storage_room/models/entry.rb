@@ -1,22 +1,26 @@
 module StorageRoom
   class Entry < Model
-    class << self                  
-      def index_path # :nodoc:
-        "/collections/#{collection_id}/entries" 
+    class_inheritable_accessor :collection_path
+    
+    class << self   
+      def class_with_options(name, options = {})
+        # TODO_SK: check options
+        
+        klass = StorageRoom.class_for_name(name)
+        
+        klass.collection_path = options[:collection_path]
+        
+        klass
       end
       
+      def index_path
+        "#{collection_path}/entries"
+      end
+            
       def show_path(entry_id) # :nodoc:
         "#{index_path}/#{entry_id}"
       end
-      
-      def collection_path # :nodoc:
-        "/collections/#{collection_id}"
-      end
-      
-      def collection_id # :nodoc:
-        self.name.gsub('StorageRoom::', '').tableize
-      end
-      
+            
       def json_name # :nodoc:
         'entry'
       end

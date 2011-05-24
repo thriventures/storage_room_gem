@@ -5,7 +5,7 @@
         "resources": [{
             "name": "Guidebooks",
             "@updated_at": "2010-11-05T12:55:04Z",
-            "@entries_url": "http://api.storageroomapp.com/accounts/4c8fd48542507175aa00002f/collections/4d960916ba05617333000005/entries",
+            "@entries_url": "http://api.storageroomapp.com/accounts/4c8fd48542507175aa00002f/collections/4ddaf68b4d085d374a000003/entries",
             "@created_at": "2010-09-14T20:01:13Z",
             "@version": 2,
             "fields": [{
@@ -36,7 +36,7 @@
                 "identifier": "location"
             }],
             "@type": "Collection",
-            "@url": "http://api.storageroomapp.com/accounts/4c8fd48542507175aa00002f/collections/4d960916ba05617333000005"
+            "@url": "http://api.storageroomapp.com/accounts/4c8fd48542507175aa00002f/collections/4ddaf68b4d085d374a000003"
         }]
     }
 }

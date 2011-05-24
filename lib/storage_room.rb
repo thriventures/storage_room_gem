@@ -73,9 +73,11 @@ module StorageRoom
     
     # Return a Ruby class for a StorageRoom type
     def class_for_name(name) 
-      if method(:const_defined?).arity == 1 ? StorageRoom.const_defined?(name)  : StorageRoom.const_defined?(name, false) # ruby 1.9 check
+      is_ruby_19 = method(:const_defined?).arity == 1 # ruby 1.9 check
+      
+      if is_ruby_19 ? StorageRoom.const_defined?(name)  : StorageRoom.const_defined?(name, false)
         "StorageRoom::#{name}".constantize
-      elsif method(:const_defined?).arity == 1 ? Object.const_defined?(name) : Object.const_defined?(name, false) # ruby 1.9 check
+      elsif is_ruby_19 ? Object.const_defined?(name) : Object.const_defined?(name, false)
         name.constantize
       else
         klass = Class.new(Entry) 

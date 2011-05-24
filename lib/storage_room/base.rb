@@ -33,7 +33,7 @@ module StorageRoom
         object = case type
           when 'Array' then Array.new
           when 'Collection' then Collection.new
-          else
+          else # entry
             StorageRoom.class_for_name(type.classify).new
         end
         

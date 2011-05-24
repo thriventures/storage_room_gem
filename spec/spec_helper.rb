@@ -5,7 +5,7 @@ require 'storage_room'
 # require 'spec/autorun'
 require 'webmock/rspec'
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   config.include WebMock::API
   
   config.before(:each) do
