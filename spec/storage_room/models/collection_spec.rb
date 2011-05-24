@@ -44,7 +44,7 @@ describe StorageRoom::Collection do
     
     describe "#entry_class" do
       it "should return class" do
-        @collection[:identifier] = 'guidebook'
+        @collection[:name] = 'guidebook'
         klass = @collection.entry_class
         klass.should == Guidebook
       end
