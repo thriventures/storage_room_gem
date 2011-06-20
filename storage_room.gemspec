@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{storage_room}
-  s.version = "0.2.1"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sascha Konietzke"]
-  s.date = %q{2011-05-23}
+  s.date = %q{2011-06-20}
   s.description = %q{StorageRoom is a CMS system for Mobile Applications (iPhone, Android, BlackBerry, ...). This library gives you an ActiveModel-like interface to your data.}
   s.email = %q{sascha@thriventures.com}
   s.extra_rdoc_files = [
@@ -32,33 +32,72 @@ Gem::Specification.new do |s|
     "examples/import_csv.rb",
     "examples/search_entries.rb",
     "examples/update_entry.rb",
+    "lib/console.rb",
     "lib/storage_room.rb",
+    "lib/storage_room/accessors.rb",
     "lib/storage_room/array.rb",
-    "lib/storage_room/attributes.rb",
-    "lib/storage_room/base.rb",
     "lib/storage_room/embedded.rb",
+    "lib/storage_room/embeddeds/field.rb",
+    "lib/storage_room/embeddeds/fields/association_field.rb",
+    "lib/storage_room/embeddeds/fields/associations/many_association_field.rb",
+    "lib/storage_room/embeddeds/fields/associations/one_association_field.rb",
+    "lib/storage_room/embeddeds/fields/atomic/boolean_field.rb",
+    "lib/storage_room/embeddeds/fields/atomic/date_field.rb",
+    "lib/storage_room/embeddeds/fields/atomic/float_field.rb",
+    "lib/storage_room/embeddeds/fields/atomic/integer_field.rb",
+    "lib/storage_room/embeddeds/fields/atomic/string_field.rb",
+    "lib/storage_room/embeddeds/fields/atomic/time_field.rb",
+    "lib/storage_room/embeddeds/fields/atomic_field.rb",
+    "lib/storage_room/embeddeds/fields/compound/attachment_field.rb",
+    "lib/storage_room/embeddeds/fields/compound/file_field.rb",
+    "lib/storage_room/embeddeds/fields/compound/image_field.rb",
+    "lib/storage_room/embeddeds/fields/compound/location_field.rb",
+    "lib/storage_room/embeddeds/fields/compound_field.rb",
     "lib/storage_room/embeddeds/file.rb",
+    "lib/storage_room/embeddeds/image.rb",
     "lib/storage_room/embeddeds/location.rb",
-    "lib/storage_room/field.rb",
+    "lib/storage_room/extensions/const_defined.rb",
+    "lib/storage_room/identity_map.rb",
     "lib/storage_room/model.rb",
     "lib/storage_room/models/collection.rb",
     "lib/storage_room/models/entry.rb",
+    "lib/storage_room/plugins.rb",
+    "lib/storage_room/proxy.rb",
+    "lib/storage_room/resource.rb",
     "spec/fixtures/collection.json",
     "spec/fixtures/collections.json",
     "spec/fixtures/validation_error.json",
     "spec/spec_helper.rb",
+    "spec/storage_room/accessors_spec.rb",
     "spec/storage_room/array_spec.rb",
-    "spec/storage_room/attributes_spec.rb",
-    "spec/storage_room/base_spec.rb",
     "spec/storage_room/embedded_spec.rb",
+    "spec/storage_room/embeddeds/field_spec.rb",
+    "spec/storage_room/embeddeds/fields/association_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/associations/many_association_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/associations/one_association_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/atomic/boolean_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/atomic/date_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/atomic/float_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/atomic/integer_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/atomic/string_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/atomic/time_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/atomic_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/compound/attachment_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/compound/file_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/compound/image_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/compound/location_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/compound_field_spec.rb",
     "spec/storage_room/embeddeds/file_spec.rb",
     "spec/storage_room/embeddeds/location_spec.rb",
-    "spec/storage_room/field_spec.rb",
+    "spec/storage_room/identity_map_spec.rb",
     "spec/storage_room/model_spec.rb",
     "spec/storage_room/models/collection_spec.rb",
     "spec/storage_room/models/entry_spec.rb",
+    "spec/storage_room/proxy_spec.rb",
+    "spec/storage_room/resource_spec.rb",
     "spec/storage_room_spec.rb",
-    "storage_room.gemspec"
+    "storage_room.gemspec",
+    "tasks/storage_room.rake"
   ]
   s.homepage = %q{http://github.com/thriventures/storage_room_gem}
   s.require_paths = ["lib"]
