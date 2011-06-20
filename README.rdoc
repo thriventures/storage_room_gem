@@ -1,6 +1,13 @@
 == StorageRoom Gem
 
-This gem provides read and write access to the StorageRoom API (http://storageroomapp.com). It has an ActiveRecord/ActiveModel like interface.
+This gem provides read and write access to the StorageRoom API (http://storageroomapp.com). 
+
+== Main Features
+
+* ActiveRecord/ActiveModel like interface.
+* Automatic creation of Entry Classes from a Collection, you don't have to configure anything
+* Supports lazy-loading of associations (e.g. post.category will fetch a category transparently if it has not yet been loaded)
+* Supports caching through an identity map, so that Resources don't have to be loaded multiple times
 
 
 == Installation
@@ -17,10 +24,9 @@ This is a walkthrough with all steps you need to setup a devise entry, including
   StorageRoom.authenticate(YOUR_ACCOUNT_ID, YOUR_APPLICATION_API_KEY)
   collection = StorageRoom::Collection.find('4ddaf68b4d085d374a000003')
   
-  entries = collection.entries
-  entry = entries.resources.first
+  entry = collection.entries.resources.first # collection.entries contains meta information, the resources key contains the returned objects
   
-  entry[:name] = 'Foobar'
+  entry.name = 'Foobar'
   
   if entry.save
     puts "Entry saved."

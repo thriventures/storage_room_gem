@@ -6,6 +6,6 @@ collections = StorageRoom::Collection.all
 
 puts "Collections:"
 
-collections.resources.each do |collection|
-  puts "- #{collection[:name]}"
+collections.resources.each do |collection| # The array returned by Collection.all contains all the items in the resources key
+  puts "- #{collection.name}"
 end

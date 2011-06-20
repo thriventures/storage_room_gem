@@ -1,28 +1,8 @@
 module StorageRoom
   # A container object that contains many models (collections or entries)
-  class Array < Base
-    attr_accessor :resources
-    
-        
-    def initialize(attributes = {})
-      self.resources = []
-      super
-    end
-    
-    # Set the array with the attributes from the API
-    def set_from_api(attributes)
-      super(attributes)
-                  
-      self.resources = attributes['resources'].map{|item| self.class.create_from_api(item)} # transform hashes to real objects
-      attributes.delete('resources')  
-    end
-    
-    # Reset the Array to its default state with all attributes unset
-    def reset!
-      super
-      @resources = []
-    end
-    
+  class Array < Resource
+    many :resources
+            
     # Replaces the objects content with the next page of the array if a next page exists
     def load_next_page!
       if self[:@next_page_url].present?

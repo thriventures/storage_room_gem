@@ -1,5 +1,10 @@
 
+
 == Version X
 
-- have collection fields
+- have a gemfile?
+- make on/many only accept objects of correct class?
 - executable/cli
+- file uploads/removals
+  - get files via api
+- look at arguments with identity map  

@@ -15,22 +15,6 @@
             "hint": "",
             "choices": [],
             "identifier": "title"
-        },
-        {
-            "name": "PDF",
-            "required": false,
-            "input_type": "file",
-            "@type": "FileField",
-            "hint": "Upload a PDF file",
-            "identifier": "pdf"
-        },
-        {
-            "name": "location",
-            "required": false,
-            "input_type": "location",
-            "@type": "LocationField",
-            "hint": "",
-            "identifier": "location"
         }],
         "@type": "Collection",
         "@url": "http://api.storageroomapp.com/accounts/4c8fd48542507175aa00002f/collections/4ddaf68b4d085d374a000003"

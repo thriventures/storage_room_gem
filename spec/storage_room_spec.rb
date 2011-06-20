@@ -1,5 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
+class Client < StorageRoom::Entry
+  key :name
+end
+
 describe StorageRoom do
   describe "#authenticate" do
     before(:each) do
@@ -7,7 +11,7 @@ describe StorageRoom do
     end
     
     it "should set basic auth" do
-      StorageRoom::Base.default_options[:basic_auth].should == {:username => 'api_key', :password => 'X'}
+      StorageRoom::Resource.default_options[:basic_auth].should == {:username => 'api_key', :password => 'X'}
     end
     
     it "should set variables" do
@@ -16,7 +20,7 @@ describe StorageRoom do
     end
     
     it "should update uri" do
-      StorageRoom::Base.base_uri.should include('account_id')
+      StorageRoom::Resource.base_uri.should include('account_id')
     end
   end
   
@@ -26,7 +30,7 @@ describe StorageRoom do
     end
     
     it "should set user agent" do
-      StorageRoom::Base.headers['User-Agent'].should == 'agent'
+      StorageRoom::Resource.headers['User-Agent'].should == 'agent'
     end
     
     it "should set variables" do
@@ -40,7 +44,7 @@ describe StorageRoom do
     end
     
     it "should update uri" do
-      StorageRoom::Base.base_uri.should include('server')
+      StorageRoom::Resource.base_uri.should include('server')
     end
     
     it "should set variables" do
@@ -59,7 +63,7 @@ describe StorageRoom do
     end
     
     it "should update uri" do
-      StorageRoom::Base.base_uri.should include('https://')
+      StorageRoom::Resource.base_uri.should include('https://')
     end
     
     it "should set variables" do
@@ -73,8 +77,8 @@ describe StorageRoom do
     end
     
     it "should set proxy" do
-      StorageRoom::Base.default_options[:http_proxyaddr].should == 'http_proxy'
-      StorageRoom::Base.default_options[:http_proxyport].should == 123      
+      StorageRoom::Resource.default_options[:http_proxyaddr].should == 'http_proxy'
+      StorageRoom::Resource.default_options[:http_proxyport].should == 123      
     end
     
     it "should set variables" do
@@ -83,11 +87,35 @@ describe StorageRoom do
     end
   end
   
+  describe "#entry_class_mappings" do
+    it "should return hash" do
+      StorageRoom.entry_class_mappings.should == {}
+    end
+  end
+  
+  describe "#add_entry_class_mapping" do
+    it "should add to hash" do
+      StorageRoom.add_entry_class_mapping('Recipes List', 'List')
+      StorageRoom.entry_class_mappings.should include('Recipes List' => 'List')
+    end
+  end
+  
+  describe "#entry_class_for_name" do
+    it "should return with mapping" do
+      StorageRoom.add_entry_class_mapping('Recipes List', 'List')
+      StorageRoom.entry_class_for_name('Recipes List').should == 'List'
+    end
+    
+    it "should return without mapping" do
+      StorageRoom.entry_class_for_name('Restaurant Visits').should == 'RestaurantVisit'      
+    end
+  end
+  
   describe "#class_for_name" do
     it "should get class" do
-      klass = StorageRoom.class_for_name('Recipe')
+      klass = StorageRoom.class_for_name('Client')
       klass.should be_an_instance_of(Class)
-      klass.name.should == 'Recipe'
+      klass.name.should == 'Client'
     end
     
     it "should get StorageRoom class" do
@@ -95,5 +123,13 @@ describe StorageRoom do
       klass.should be_an_instance_of(Class)
       klass.should == StorageRoom::Entry
     end
+    
+    it "should raise an error for unknown classes" do
+      lambda {
+        StorageRoom.class_for_name("Unknown")
+      }.should raise_error(StorageRoom::ClassNotFound)
+      
+    end
   end
+  
 end

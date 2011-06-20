@@ -8,14 +8,14 @@ lines = CSV.read(File.dirname(__FILE__) + '/guidebooks.csv') # Exported an Excel
 
 lines.slice!(0) # remove header line
 
-collection = StorageRoom::Collection.find('4ddaf68b4d085d374a000003')
-klass = collection.entry_class
+collection = StorageRoom::Collection.find('4dda7761b65245fde100005d')
+Guidebook = collection.entry_class
 
 lines.each do |row|
-  guidebook = klass.new(:title => row[0], :price => row[1].to_f)
+  guidebook = Guidebook.new(:title => row[0], :price => row[1].to_f)
 
   if guidebook.save
-    puts "Guidebook saved: #{guidebook[:title]}, #{guidebook[:price]}"
+    puts "Guidebook saved: #{guidebook.title}, #{guidebook.price}"
   else
     puts "Guidebook could not be saved: #{guidebook.errors.join(', ')}"
   end

@@ -1,6 +1,6 @@
 module StorageRoom
   # Abstract superclass for classes that can persist to the remote servers
-  class Model < Base
+  class Model < Resource    
     class << self
       # Create a new model with the passed attributes
       def create(attributes={})
@@ -35,31 +35,21 @@ module StorageRoom
     
     # Create a new model and set its attributes
     def initialize(attributes={})     
-      @new_record = true
       @errors = []
       
       super
     end
-    
-    # Set the attributes of the model from the API
-    def set_from_api(attributes)
-      super
-      @new_record = false
-      
-      self.attributes
-    end
-    
+        
     # Reset the model to its default state
     def reset!
       super
-      @new_record = true
       @errors = []
       true
     end
     
     # Has this model been saved to the API already?
     def new_record?
-      @new_record ? true : false
+      self['@version'] ? false : true
     end
     
     # Create a new model or update an existing model on the server
@@ -77,7 +67,7 @@ module StorageRoom
     # Update an existing model on the server
     def update
       return false if new_record?
-      httparty = self.class.put(url, :body => to_json)
+      httparty = self.class.put(self[:@url], :body => to_json)
       handle_save_response(httparty)
     end
     
@@ -85,7 +75,7 @@ module StorageRoom
     def destroy
       return false if new_record?
       
-      httparty = self.class.delete(url)
+      httparty = self.class.delete(self[:@url])
       self.class.handle_critical_response_errors(httparty)
       
       true
@@ -96,8 +86,17 @@ module StorageRoom
       self.errors.empty?
     end
     
-    def as_json(args = {}) # :nodoc:
-      {self.class.json_name => self.attributes.reject{|k, v| self.class.meta_data?(k) && k.to_s != '@version'}}
+    # ActiveSupport caused problems when using as_json, so using to_hash
+    def to_hash(args = {}) # :nodoc:
+      args ||= {}
+      
+      if args[:nested]
+        {'url' => self[:@url] || self[:url]}
+      else
+        hash = super
+        hash.merge!('@version' => self['@version']) unless new_record?
+        {self.class.json_name => hash}        
+      end
     end
     
     # The validation errors that were returned by the server
@@ -105,22 +104,19 @@ module StorageRoom
       @errors ||= []
     end
     
-    # ===================
-    # = Private Methods =
-    # ===================
-    
-    private
+    protected
       def handle_save_response(httparty) # :nodoc:
         self.class.handle_critical_response_errors(httparty)
         
         if httparty.response.code == '200' || httparty.response.code == '201'
-          self.set_from_api(httparty.parsed_response.first[1])
+          self.set_from_response_data(httparty.parsed_response.first[1])
           true
         else
           @errors = httparty.parsed_response['error']['message']
           false
         end
       end
+
       
   end
 end

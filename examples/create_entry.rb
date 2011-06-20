@@ -2,13 +2,16 @@
 
 require File.dirname(__FILE__) + '/authentication'
 
+
 # fetch the collection first
-collection = StorageRoom::Collection.find('4ddaf68b4d085d374a000003')
+guidebook_collection = StorageRoom::Collection.find('4dda7761b65245fde100005d')
+category_collection  = StorageRoom::Collection.find('4dda7761b65245fde100001a')
 
-entry2 = collection.entry_class.new(:title => 'Bar', :price => 2.23)
+category = category_collection.entries.resources.first # find the first category
+guidebook = guidebook_collection.entry_class.new(:title => 'Bar', :price => 2.23, :category => category)
 
-if entry2.save
-  puts "Entry saved"
+if guidebook.save # save the guidebook with the associated category
+  puts "Guidebook Entry saved (#{guidebook[:@url]})"
 else
-  puts "Entry could not be saved: #{entry2.errors.join(', ')}"
+  puts "Guidebook could not be saved: #{entry2.errors.join(', ')}"
 end

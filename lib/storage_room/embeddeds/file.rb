@@ -1,5 +1,5 @@
 module StorageRoom
-  # A file that is embedded in a entry
+  # Any file
   class File < Embedded
     
   end

@@ -10,6 +10,7 @@ RSpec.configure do |config|
   
   config.before(:each) do
     StorageRoom.authenticate('USER_ID', 'APPLICATION_API_KEY')
+    StorageRoom::IdentityMap.clear
   end
 end
 

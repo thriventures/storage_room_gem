@@ -12,7 +12,7 @@ begin
     gem.authors = ["Sascha Konietzke"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "webmock"
-    
+      
     gem.add_dependency 'httparty', '>= 0.6.1'
     gem.add_dependency 'activesupport', '>= 3.0.0'
     
@@ -45,3 +45,5 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+Dir['tasks/**/*.rake'].each { |t| load t }
