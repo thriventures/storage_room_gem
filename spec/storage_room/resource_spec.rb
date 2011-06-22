@@ -44,7 +44,7 @@ describe StorageRoom::Resource do
           
           lambda {
             StorageRoom::Array.load('/collections')
-          }.should raise_error(StorageRoom::RequestFailed)
+          }.should raise_error(StorageRoom::RequestFailedError)
           
         end
       end
@@ -73,7 +73,7 @@ describe StorageRoom::Resource do
         it "should raise error" do
           lambda {
             StorageRoom::Resource.handle_critical_response_errors(mock_httparty(500))
-          }.should raise_error(StorageRoom::RequestFailed)
+          }.should raise_error(StorageRoom::RequestFailedError)
         end
       end
             

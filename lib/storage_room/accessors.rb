@@ -57,9 +57,9 @@ module StorageRoom
 
         self.attributes.each do |name, value|
           hash[name] = if value.is_a?(::Array)
-            value.map{|x| x.respond_to?(:to_hash) ? x.to_hash(:nested => true) : x }
+            value.map {|x| x.respond_to?(:to_hash) ? call_method_with_optional_parameters(x, :to_hash, :nested => true) : x}
           elsif value.respond_to?(:to_hash)
-            value.to_hash(:nested => true)
+            call_method_with_optional_parameters(value, :to_hash, :nested => true)
           elsif value.respond_to?(:as_json)
             value.as_json(:nested => true)
           else
@@ -69,7 +69,7 @@ module StorageRoom
         
         hash
       end
-          
+                
       def inspect # :nodoc:
         body = attributes.map{|k, v| "#{k}: #{attribute_for_inspect(v)}"}.join(', ')
         "#<#{self.class} #{body}>"        
@@ -92,6 +92,17 @@ module StorageRoom
       end
       
       protected
+        # Helper to not call to_hash with the wrong number of arguments
+        def call_method_with_optional_parameters(object, method_name, parameters)
+          if object.respond_to?(method_name) 
+            if object.method(method_name).arity == -1
+              object.send(method_name, parameters)
+            else
+              object.send(method_name)
+            end
+          end
+        end
+      
         # Iterate over the response data and initialize the attributes
         def initialize_from_response_data # :nodoc:
           self.class.attribute_options.each do |name, options|
@@ -114,7 +125,7 @@ module StorageRoom
           if loaded?
             yield if block_given?
           else
-            raise StorageRoom::ResourceNotLoaded
+            raise StorageRoom::ResourceNotLoadedError
           end
         end
         

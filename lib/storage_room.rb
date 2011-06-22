@@ -10,10 +10,11 @@ require 'storage_room/extensions/const_defined'
 require 'storage_room/plugins'
 
 module StorageRoom  
-  class AbstractMethod      < RuntimeError; end
-  class RequestFailed       < RuntimeError; end
-  class ResourceNotLoaded   < RuntimeError; end
-  class ClassNotFound       < RuntimeError; end
+  class AbstractMethodError      < RuntimeError; end
+  class RequestFailedError       < RuntimeError; end
+  class ResourceNotLoadedError   < RuntimeError; end
+  class ClassNotFoundError       < RuntimeError; end
+  class OptimisticLockingError   < RuntimeError; end
   
   autoload :Plugins,                  'storage_room/plugins'
   autoload :Accessors,                'storage_room/accessors'
@@ -38,7 +39,9 @@ module StorageRoom
   autoload :FloatField,               'storage_room/embeddeds/fields/atomic/float_field'  
   autoload :DateField,                'storage_room/embeddeds/fields/atomic/date_field'  
   autoload :BooleanField,             'storage_room/embeddeds/fields/atomic/boolean_field'  
-  
+  autoload :ArrayField,               'storage_room/embeddeds/fields/atomic/array_field'
+  autoload :JsonField,                'storage_room/embeddeds/fields/atomic/json_field'
+    
   autoload :CompoundField,            'storage_room/embeddeds/fields/compound_field'  
   autoload :AttachmentField,          'storage_room/embeddeds/fields/compound/attachment_field'
   autoload :FileField,                'storage_room/embeddeds/fields/compound/file_field'
@@ -112,13 +115,18 @@ module StorageRoom
     # Return a Ruby class for a StorageRoom type
     def class_for_name(name)     
       name_with_mapping = entry_class_for_name(name)
+      
+      begin
+        if StorageRoom.is_constant_defined?(name)
+          return "StorageRoom::#{name}".constantize
+        end
+      rescue NameError # could contain spaces etc.
+      end
         
-      if StorageRoom.is_constant_defined?(name)
-        "StorageRoom::#{name}".constantize
-      elsif Object.is_constant_defined?(name_with_mapping)
+      if Object.is_constant_defined?(name_with_mapping)
         name_with_mapping.constantize
       else
-        raise ClassNotFound.new("Unknown class: #{name}")
+        raise ClassNotFoundError.new("Unknown class: #{name}")
       end
     end
     

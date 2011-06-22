@@ -41,7 +41,7 @@ describe StorageRoom::Collection do
       end
       
       it "should have an error if not loaded" do
-        lambda { @collection2.entries }.should raise_error(StorageRoom::ResourceNotLoaded)
+        lambda { @collection2.entries }.should raise_error(StorageRoom::ResourceNotLoadedError)
       end
     end
     
@@ -51,7 +51,7 @@ describe StorageRoom::Collection do
       end
       
       it "should have an error if not loaded" do
-        lambda { @collection2.entry_class_name }.should raise_error(StorageRoom::ResourceNotLoaded)
+        lambda { @collection2.entry_class_name }.should raise_error(StorageRoom::ResourceNotLoadedError)
       end
     end
     
@@ -61,7 +61,7 @@ describe StorageRoom::Collection do
       end
       
       it "should have an error if not loaded" do
-        lambda { @collection2.entry_class }.should raise_error(StorageRoom::ResourceNotLoaded)
+        lambda { @collection2.entry_class }.should raise_error(StorageRoom::ResourceNotLoadedError)
       end
     end
     
@@ -75,7 +75,7 @@ describe StorageRoom::Collection do
       end
 
       it "should have an error if not loaded" do
-        lambda { @collection2.field('name') }.should raise_error(StorageRoom::ResourceNotLoaded)
+        lambda { @collection2.field('name') }.should raise_error(StorageRoom::ResourceNotLoadedError)
       end
     end
   end

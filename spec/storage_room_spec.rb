@@ -127,7 +127,7 @@ describe StorageRoom do
     it "should raise an error for unknown classes" do
       lambda {
         StorageRoom.class_for_name("Unknown")
-      }.should raise_error(StorageRoom::ClassNotFound)
+      }.should raise_error(StorageRoom::ClassNotFoundError)
       
     end
   end

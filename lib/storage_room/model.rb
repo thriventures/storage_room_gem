@@ -21,15 +21,15 @@ module StorageRoom
       
       #       
       def index_path # :nodoc:
-        raise StorageRoom::AbstractMethod.new
+        raise StorageRoom::AbstractMethodError.new
       end
       
       def show_path(id) # :nodoc:
-        raise StorageRoom::AbstractMethod.new
+        raise StorageRoom::AbstractMethodError.new
       end
       
       def json_name  # :nodoc:
-        raise StorageRoom::AbstractMethod.new
+        raise StorageRoom::AbstractMethodError.new
       end
     end
     
@@ -110,7 +110,10 @@ module StorageRoom
         
         if httparty.response.code == '200' || httparty.response.code == '201'
           self.set_from_response_data(httparty.parsed_response.first[1])
+          @errors = []
           true
+        elsif httparty.response.code == '409' # optimistic locking
+          raise OptimisticLockingError.new("The Model has been updated by somebody else")
         else
           @errors = httparty.parsed_response['error']['message']
           false

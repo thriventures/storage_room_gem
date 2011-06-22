@@ -29,7 +29,7 @@ describe StorageRoom::Model do
         it "should raise" do
           lambda {
             StorageRoom::Model.show_path(1)
-          }.should raise_error(StorageRoom::AbstractMethod)
+          }.should raise_error(StorageRoom::AbstractMethodError)
         end
       end
       
@@ -37,7 +37,7 @@ describe StorageRoom::Model do
         it "should raise" do
           lambda {
             StorageRoom::Model.index_path
-          }.should raise_error(StorageRoom::AbstractMethod)
+          }.should raise_error(StorageRoom::AbstractMethodError)
         end
       end
       
@@ -45,7 +45,7 @@ describe StorageRoom::Model do
         it "should raise" do
           lambda {
             StorageRoom::Model.json_name
-          }.should raise_error(StorageRoom::AbstractMethod)
+          }.should raise_error(StorageRoom::AbstractMethodError)
         end
       end
       
