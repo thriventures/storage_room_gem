@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{storage_room}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sascha Konietzke"]
-  s.date = %q{2011-06-20}
+  s.date = %q{2011-06-22}
   s.description = %q{StorageRoom is a CMS system for Mobile Applications (iPhone, Android, BlackBerry, ...). This library gives you an ActiveModel-like interface to your data.}
   s.email = %q{sascha@thriventures.com}
   s.extra_rdoc_files = [
@@ -41,10 +41,12 @@ Gem::Specification.new do |s|
     "lib/storage_room/embeddeds/fields/association_field.rb",
     "lib/storage_room/embeddeds/fields/associations/many_association_field.rb",
     "lib/storage_room/embeddeds/fields/associations/one_association_field.rb",
+    "lib/storage_room/embeddeds/fields/atomic/array_field.rb",
     "lib/storage_room/embeddeds/fields/atomic/boolean_field.rb",
     "lib/storage_room/embeddeds/fields/atomic/date_field.rb",
     "lib/storage_room/embeddeds/fields/atomic/float_field.rb",
     "lib/storage_room/embeddeds/fields/atomic/integer_field.rb",
+    "lib/storage_room/embeddeds/fields/atomic/json_field.rb",
     "lib/storage_room/embeddeds/fields/atomic/string_field.rb",
     "lib/storage_room/embeddeds/fields/atomic/time_field.rb",
     "lib/storage_room/embeddeds/fields/atomic_field.rb",
@@ -75,10 +77,12 @@ Gem::Specification.new do |s|
     "spec/storage_room/embeddeds/fields/association_field_spec.rb",
     "spec/storage_room/embeddeds/fields/associations/many_association_field_spec.rb",
     "spec/storage_room/embeddeds/fields/associations/one_association_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/atomic/array_field_spec.rb",
     "spec/storage_room/embeddeds/fields/atomic/boolean_field_spec.rb",
     "spec/storage_room/embeddeds/fields/atomic/date_field_spec.rb",
     "spec/storage_room/embeddeds/fields/atomic/float_field_spec.rb",
     "spec/storage_room/embeddeds/fields/atomic/integer_field_spec.rb",
+    "spec/storage_room/embeddeds/fields/atomic/json_field_spec.rb",
     "spec/storage_room/embeddeds/fields/atomic/string_field_spec.rb",
     "spec/storage_room/embeddeds/fields/atomic/time_field_spec.rb",
     "spec/storage_room/embeddeds/fields/atomic_field_spec.rb",
