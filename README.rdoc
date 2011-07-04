@@ -8,7 +8,7 @@ This gem provides read and write access to the StorageRoom API (http://storagero
 * Automatic creation of Entry Classes from a Collection, you don't have to configure anything
 * Supports lazy-loading of associations (e.g. post.category will fetch a category transparently if it has not yet been loaded)
 * Supports caching through an identity map, so that Resources don't have to be loaded multiple times
-
+* Easy file uploads and removals
 
 == Installation
 

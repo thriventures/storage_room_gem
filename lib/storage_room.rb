@@ -4,6 +4,8 @@ $:.unshift(File.dirname(__FILE__)) unless
 begin; require 'rubygems'; rescue LoadError; end
 
 require 'httparty'
+require 'mime/types'
+require 'base64'
 require 'active_support/all' 
 require 'storage_room/extensions/const_defined'
 
@@ -55,6 +57,7 @@ module StorageRoom
   autoload :File,                     'storage_room/embeddeds/file'
   autoload :Image,                    'storage_room/embeddeds/image'
   autoload :Location,                 'storage_room/embeddeds/location'
+  autoload :ImageVersion,             'storage_room/embeddeds/image_version'
 
 
   class << self
@@ -117,8 +120,8 @@ module StorageRoom
       name_with_mapping = entry_class_for_name(name)
       
       begin
-        if StorageRoom.is_constant_defined?(name)
-          return "StorageRoom::#{name}".constantize
+        if StorageRoom.is_constant_defined?(name_with_mapping)
+          return "StorageRoom::#{name_with_mapping}".constantize
         end
       rescue NameError # could contain spaces etc.
       end
