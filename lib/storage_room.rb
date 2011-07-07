@@ -102,6 +102,10 @@ module StorageRoom
       self.entry_class_mappings[name] || name.gsub(/\s+/, "").classify
     end
     
+    def version
+      @version ||= ::File.read(::File.expand_path(::File.dirname(__FILE__) + '/../VERSION'))
+    end
+    
     # Requests are made with SSL
     def ssl=(ssl)
       @ssl = ssl

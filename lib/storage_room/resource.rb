@@ -8,7 +8,7 @@ module StorageRoom
     
     plugin IdentityMap
     
-    headers 'User-Agent' => 'StorageRoom Ruby Gem', 'Accept' => 'application/json', 'Content-Type' => 'application/json'
+    headers 'User-Agent' => "StorageRoom Ruby Gem (#{StorageRoom.version})", 'Accept' => 'application/json', 'Content-Type' => 'application/json'
     format :json
 
     class << self      

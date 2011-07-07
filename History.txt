@@ -1,3 +1,6 @@
+== Version 0.3.3
+* Added gem version information to default user agent header
+
 === Version 0.3.2
 * Support for File and Image uploads
 

@@ -132,4 +132,10 @@ describe StorageRoom do
     end
   end
   
+  describe "#version" do
+    it "should return version number" do
+      StorageRoom.version.should =~ /\A\d+\.\d+\.\d+\Z/
+    end
+  end
+  
 end
