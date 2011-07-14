@@ -9,7 +9,7 @@ describe StorageRoom::Field do
     it "should have keys" do
       keys = StorageRoom::Field.attribute_options.keys
       
-      [:name, :identifier, :hint, :input_type, :required, :unique, :maximum_length, :minimum_length, :minimum_number, :maximum_number, :minimum_size, :maximum_size].each do |key|
+      [:name, :identifier, :interface, :hint, :input_type, :required, :unique, :maximum_length, :minimum_length, :minimum_number, :maximum_number, :minimum_size, :maximum_size].each do |key|
         keys.should include(key)
       end
     end

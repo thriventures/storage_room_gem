@@ -1,3 +1,6 @@
+== Version 0.3.4
+* Added interface key to Fields
+
 == Version 0.3.3
 * Added gem version information to default user agent header
 

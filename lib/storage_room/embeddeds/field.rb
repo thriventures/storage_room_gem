@@ -3,7 +3,8 @@ module StorageRoom
   class Field < Embedded
     key :name
     key :identifier
-
+    
+    key :interface
     key :hint
 
     key :input_type
