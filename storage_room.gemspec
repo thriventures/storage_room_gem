@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{storage_room}
-  s.version = "0.3.4"
+  s.version = "0.3.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sascha Konietzke"]
-  s.date = %q{2011-07-14}
+  s.date = %q{2011-07-18}
   s.description = %q{StorageRoom is a CMS system for Mobile Applications (iPhone, Android, BlackBerry, ...). This library gives you an ActiveModel-like interface to your data.}
   s.email = %q{sascha@thriventures.com}
   s.extra_rdoc_files = [
@@ -60,6 +60,7 @@ Gem::Specification.new do |s|
     "lib/storage_room/embeddeds/image.rb",
     "lib/storage_room/embeddeds/image_version.rb",
     "lib/storage_room/embeddeds/location.rb",
+    "lib/storage_room/embeddeds/webhook_definition.rb",
     "lib/storage_room/extensions/const_defined.rb",
     "lib/storage_room/identity_map.rb",
     "lib/storage_room/model.rb",
@@ -68,10 +69,12 @@ Gem::Specification.new do |s|
     "lib/storage_room/plugins.rb",
     "lib/storage_room/proxy.rb",
     "lib/storage_room/resource.rb",
+    "lib/storage_room/webhook_call.rb",
     "spec/fixtures/collection.json",
     "spec/fixtures/collections.json",
     "spec/fixtures/image.png",
     "spec/fixtures/validation_error.json",
+    "spec/fixtures/webhook_call.json",
     "spec/spec_helper.rb",
     "spec/storage_room/accessors_spec.rb",
     "spec/storage_room/array_spec.rb",
@@ -98,12 +101,14 @@ Gem::Specification.new do |s|
     "spec/storage_room/embeddeds/image_spec.rb",
     "spec/storage_room/embeddeds/image_version_spec.rb",
     "spec/storage_room/embeddeds/location_spec.rb",
+    "spec/storage_room/embeddeds/webhook_definition_spec.rb",
     "spec/storage_room/identity_map_spec.rb",
     "spec/storage_room/model_spec.rb",
     "spec/storage_room/models/collection_spec.rb",
     "spec/storage_room/models/entry_spec.rb",
     "spec/storage_room/proxy_spec.rb",
     "spec/storage_room/resource_spec.rb",
+    "spec/storage_room/webhook_call_spec.rb",
     "spec/storage_room_spec.rb",
     "storage_room.gemspec",
     "tasks/storage_room.rake"
