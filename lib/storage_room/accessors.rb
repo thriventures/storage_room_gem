@@ -152,6 +152,12 @@ module StorageRoom
         new_from_response_data(httparty.parsed_response.first[1])
       end
       
+      # Build an object out of the POST body
+      def new_from_json_string(json_string)
+        hash = JSON.parse(json_string)
+        new_from_response_data(hash)
+      end
+      
       # Creates a new object of the correct class and initializes it from the response data
       def new_from_response_data(response_data)
         object = StorageRoom.class_for_name(response_data['@type']).new.set_from_response_data(response_data)

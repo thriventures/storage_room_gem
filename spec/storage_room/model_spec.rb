@@ -255,6 +255,19 @@ describe StorageRoom::Model do
          collection.destroy
        end
      end
+     
+     describe "#query_parameters" do
+       it "should return parameter if skip_webhooks" do
+         @model.skip_webhooks = false
+         @model.send(:query_parameters).should be_nil
+       end
+       
+       it "should return nil if not skip_webhooks" do
+         @model.skip_webhooks = true
+         @model.send(:query_parameters).should include(:skip_webhooks => true)
+       end
+       
+     end
     
   end
   

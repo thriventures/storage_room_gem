@@ -11,7 +11,7 @@ module StorageRoom
     headers 'User-Agent' => "StorageRoom Ruby Gem (#{StorageRoom.version})", 'Accept' => 'application/json', 'Content-Type' => 'application/json'
     format :json
 
-    class << self      
+    class << self            
       # Handle known server errors
       def handle_critical_response_errors(httparty) # :nodoc:
         case httparty.response.code

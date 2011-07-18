@@ -1,3 +1,9 @@
+== Version 0.3.5
+* Added WebhookDefinition as an array on Collection
+* Added WebhookCall Resource to parse the POST body of StorageRoom Webhooks on a server
+* Added the option to skip_webhooks when creating, updating or destroying a Model
+* Added trash key to Entries
+
 == Version 0.3.4
 * Added interface key to Fields
 

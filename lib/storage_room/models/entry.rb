@@ -29,6 +29,11 @@ module StorageRoom
     def collection
       self.class.collection
     end    
+    
+    # Has this Entry been trashed?
+    def trashed?
+      self[:@trash]
+    end
 
   end
 end

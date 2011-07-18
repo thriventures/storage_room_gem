@@ -26,6 +26,7 @@ module StorageRoom
   autoload :Resource,                 'storage_room/resource'
   autoload :Model,                    'storage_room/model'
   autoload :Array,                    'storage_room/array'
+  autoload :WebhookCall,              'storage_room/webhook_call'
 
   autoload :Embedded,                 'storage_room/embedded'
   
@@ -58,6 +59,7 @@ module StorageRoom
   autoload :Image,                    'storage_room/embeddeds/image'
   autoload :Location,                 'storage_room/embeddeds/location'
   autoload :ImageVersion,             'storage_room/embeddeds/image_version'
+  autoload :WebhookDefinition,        'storage_room/embeddeds/webhook_definition'
 
 
   class << self

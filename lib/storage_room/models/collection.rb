@@ -5,6 +5,7 @@ module StorageRoom
     key :primary_field_identifier
     
     many :fields
+    many :webhook_definitions
     
     class << self                  
       def index_path # :nodoc:

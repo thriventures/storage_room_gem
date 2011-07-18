@@ -54,5 +54,17 @@ describe StorageRoom::Entry do
         @entry.collection.should == @collection
       end
     end
+    
+    describe "#trashed?" do
+      it "should return true" do
+        @entry.response_data[:@trash] = true
+        @entry.should be_trashed
+      end
+      
+      it "should return false" do
+        @entry.response_data[:@trash] = false
+        @entry.should_not be_trashed
+      end
+    end
   end
 end
