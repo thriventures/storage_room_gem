@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby -rubygems
 
-require File.dirname(__FILE__) + '/authentication'
+require File.join(File.dirname(__FILE__), 'authentication')
 
 collection = StorageRoom::Collection.find('4dda7761b65245fde100005d')
 

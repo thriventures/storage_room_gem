@@ -152,6 +152,12 @@ module StorageRoom
         new_from_response_data(httparty.parsed_response.first[1])
       end
       
+      # Build an object out of a local file
+      def new_from_json_file(path)
+        json = ::File.read(path)
+        new_from_json_string(json)
+      end
+      
       # Build an object out of the POST body
       def new_from_json_string(json_string)
         hash = JSON.parse(json_string)

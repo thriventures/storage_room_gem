@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby -rubygems
 
-require File.dirname(__FILE__) + '/authentication'
+require File.join(File.dirname(__FILE__), 'authentication')
 
 require "csv" # faster_csv (ruby 1.9)
 
-lines = CSV.read(File.dirname(__FILE__) + '/guidebooks.csv') # Exported an Excel file as CSV
+lines = CSV.read(File.join(File.dirname(__FILE__), 'guidebooks.csv')) # Exported an Excel file as CSV
 
 lines.slice!(0) # remove header line
 

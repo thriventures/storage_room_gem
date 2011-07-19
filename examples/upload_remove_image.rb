@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby -rubygems
 
-require File.dirname(__FILE__) + '/authentication'
+require File.join(File.dirname(__FILE__), 'authentication')
 
-path = ::File.expand_path(File.dirname(__FILE__) + '/../spec/fixtures/image.png')
+path = ::File.expand_path(File.join(File.dirname(__FILE__) + '..', 'spec', 'fixtures', 'image.png'))
 collection = StorageRoom::Collection.find('4e034b8db65245b72600002b')
 
 # Upload Image or File

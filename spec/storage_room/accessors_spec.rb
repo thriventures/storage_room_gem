@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec_helper'))
 
 module StorageRoom
   class TestAccessors
@@ -10,6 +10,17 @@ module StorageRoom
 end
 
 describe StorageRoom::TestAccessors do
+  context "Class" do
+    describe "new_from_json_file" do
+      it "should open file" do
+        path = fixture_path('export_collection.json')
+        object = StorageRoom::Resource.new_from_json_file(path)
+        object.should be_an_instance_of(StorageRoom::Collection)
+      end
+    end
+    
+  end
+  
   
   context "Instance" do
     before(:each) do

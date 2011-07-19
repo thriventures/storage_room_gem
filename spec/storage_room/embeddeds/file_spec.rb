@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe StorageRoom::File do
   before(:each) do
     @file = StorageRoom::File.new
-    @name = ::File.expand_path(File.dirname(__FILE__) + '/../../fixtures/image.png')
+    @name = fixture_path('image.png')
   end
   
   context "Class Methods" do

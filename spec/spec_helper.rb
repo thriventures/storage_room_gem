@@ -19,9 +19,12 @@ def stub_url(url)
   "APPLICATION_API_KEY:X@api.storageroomapp.com/accounts/USER_ID#{url}"
 end
 
+def fixture_path(name)
+  File.expand_path(File.join(File.dirname(__FILE__), 'fixtures', name))
+end
+
 def fixture_file(name)
-  path = File.expand_path("#{File.dirname(__FILE__)}/fixtures/#{name}")
-  File.read(path)
+  File.read(fixture_path(name))
 end
 
 def mock_httparty(code)

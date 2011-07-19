@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../lib/storage_room'
+require File.join(File.dirname(__FILE__), '..', 'lib', 'storage_room')
 
 ACCOUNT_ID = '4dda7761b65245fde1000051' # your account id
 APPLICATION_API_KEY = 'kCWTmS1wxYnxzJyteuIn' # your application's API key with read/write access

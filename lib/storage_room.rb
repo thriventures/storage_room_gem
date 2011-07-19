@@ -105,7 +105,7 @@ module StorageRoom
     end
     
     def version
-      @version ||= ::File.read(::File.expand_path(::File.dirname(__FILE__) + '/../VERSION'))
+      @version ||= ::File.read(::File.expand_path(::File.join(::File.dirname(__FILE__), '..', 'VERSION')))
     end
     
     # Requests are made with SSL
