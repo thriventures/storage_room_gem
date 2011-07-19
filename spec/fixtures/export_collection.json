@@ -1,0 +1,108 @@
+{
+  "collection": {
+      "@type": "Collection",
+      "@url": "http://api.storageroomapp.com/accounts/4e1e9c234250712eba000052/collections/4e23f1ad42507165a3000002",
+      "@account_url": "http://api.storageroomapp.com/accounts/4e1e9c234250712eba000052",
+      "@entries_url": "http://api.storageroomapp.com/accounts/4e1e9c234250712eba000052/collections/4e23f1ad42507165a3000002/entries",
+      "@version": 1,
+      "@created_at": "2011-07-18T08:41:17Z",
+      "@updated_at": "2011-07-18T08:41:17Z",
+      "name": "Restaurants",
+      "primary_field_identifier": null,
+      "fields": [{
+          "@type": "StringField",
+          "name": "Name",
+          "identifier": "name",
+          "interface": true,
+          "input_type": "text_field",
+          "required": true,
+          "include_blank_choice": false
+      },
+      {
+          "@type": "StringField",
+          "name": "Text",
+          "identifier": "text",
+          "interface": true,
+          "input_type": "text_area",
+          "required": true,
+          "include_blank_choice": false
+      },
+      {
+          "@type": "StringField",
+          "name": "Address",
+          "identifier": "address",
+          "interface": true,
+          "input_type": "text_area",
+          "include_blank_choice": false
+      },
+      {
+          "@type": "StringField",
+          "name": "Website",
+          "identifier": "website",
+          "interface": true,
+          "input_type": "text_field",
+          "include_blank_choice": false
+      },
+      {
+          "@type": "DateField",
+          "name": "Last Visit",
+          "identifier": "last_visit",
+          "interface": true,
+          "input_type": "date_picker",
+          "include_blank_choice": false
+      },
+      {
+          "@type": "LocationField",
+          "name": "Location",
+          "identifier": "location",
+          "interface": true,
+          "input_type": "location",
+          "required": true
+      },
+      {
+          "@type": "IntegerField",
+          "name": "Price Range",
+          "identifier": "price_range",
+          "interface": true,
+          "input_type": "select",
+          "required": true,
+          "include_blank_choice": false,
+          "choices": [1, 2, 3]
+      },
+      {
+          "@type": "IntegerField",
+          "name": "Stars",
+          "identifier": "stars",
+          "interface": true,
+          "input_type": "select",
+          "required": true,
+          "include_blank_choice": false,
+          "choices": [1, 2, 3, 4, 5]
+      },
+      {
+          "@type": "BooleanField",
+          "name": "Vegetarian Menu",
+          "identifier": "vegetarian_menu",
+          "interface": true,
+          "input_type": "radio",
+          "include_blank_choice": false
+      },
+      {
+          "@type": "FileField",
+          "name": "Image",
+          "identifier": "image",
+          "interface": true,
+          "input_type": "file",
+          "hint": "Upload an image"
+      },
+      {
+          "@type": "FileField",
+          "name": "Preview Image",
+          "identifier": "preview_image",
+          "interface": true,
+          "input_type": "file",
+          "hint": "Upload an preview image"
+      }],
+      "webhook_definitions": []
+  }
+}

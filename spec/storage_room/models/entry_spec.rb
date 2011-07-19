@@ -55,6 +55,17 @@ describe StorageRoom::Entry do
       end
     end
     
+    describe "#id" do
+      it "should return with url" do
+        @entry.response_data[:@url] = 'http://api.storageroomapp.com/accounts/4d13574cba05613d25000004/collections/4d960916ba05617333000005/entries/4d96091aba05617333000014'
+        @entry.id.should == '4d96091aba05617333000014'
+      end
+      
+      it "should return nil" do
+        @entry.id.should be_nil
+      end
+    end
+    
     describe "#trashed?" do
       it "should return true" do
         @entry.response_data[:@trash] = true

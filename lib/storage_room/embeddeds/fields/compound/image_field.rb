@@ -1,6 +1,6 @@
 module StorageRoom
   
-  class ImageField < CompoundField
+  class ImageField < AttachmentField
     many :versions
   end
 end

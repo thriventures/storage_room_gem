@@ -1,3 +1,5 @@
+require 'open-uri'
+
 
 module StorageRoom
   # Any file
@@ -22,6 +24,34 @@ module StorageRoom
       self.content_type = ::MIME::Types.type_for(path).first.content_type
       self.data = ::Base64.encode64(::File.read(path))
     end
+    
+    # Returns the file type based on the extension
+    def file_type
+      self[:@url] ? ::File.extname(self[:@url])[1..-1] : nil
+    end
+    
+    # Download the file to the local disk
+    def download_to_directory(path)
+      Dir.mkdir(path) unless ::File.directory?(path)
+      download_file(self[:@url], ::File.join(path, local_filename))
+      true
+    end
+    
+    # The localized filename built out of the URL
+    def local_filename
+      self[:@url] ? localize_filename(self[:@url]) : nil
+    end
+    
+    protected
+      def localize_filename(filename)
+        filename.gsub(/\Ahttps?:\/\//, '').gsub('/', '_')
+      end
+    
+      def download_file(url, path)
+        file = open(path, "wb")
+        file.write(open(url).read)
+        file.close
+      end
     
 
   end

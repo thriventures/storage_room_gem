@@ -1,6 +1,6 @@
 module StorageRoom
   
-  class FileField < CompoundField
+  class FileField < AttachmentField
     
   end
 end

@@ -24,5 +24,18 @@ module StorageRoom
       self[:@processing]
     end
     
+    def local_filename(name = nil)
+      localize_filename(url(name))
+    end
+    
+    def download_to_directory(path)
+      super
+      
+      version_identifiers.each do |version|
+        download_file(self.url(version), ::File.join(path, local_filename(version)))
+      end
+      true
+    end
+    
   end
 end

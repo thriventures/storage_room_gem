@@ -34,6 +34,10 @@ module StorageRoom
     def trashed?
       self[:@trash]
     end
+    
+    def id
+      self[:@url] ? self[:@url].split('/').last : nil
+    end
 
   end
 end

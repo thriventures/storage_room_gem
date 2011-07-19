@@ -161,7 +161,7 @@ module StorageRoom
       # Build an object out of the POST body
       def new_from_json_string(json_string)
         hash = JSON.parse(json_string)
-        new_from_response_data(hash)
+        new_from_response_data(hash.first[1])
       end
       
       # Creates a new object of the correct class and initializes it from the response data

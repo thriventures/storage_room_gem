@@ -1,3 +1,7 @@
+== Version 0.3.6
+* Added methods to download files
+* Added example on how to download all files from an Export
+
 == Version 0.3.5
 * Added WebhookDefinition as an array on Collection
 * Added WebhookCall Resource to parse the POST body of StorageRoom Webhooks on a server
