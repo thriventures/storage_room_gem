@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{storage_room}
-  s.version = "0.3.5"
+  s.version = "0.3.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sascha Konietzke"]
-  s.date = %q{2011-07-18}
+  s.date = %q{2011-07-19}
   s.description = %q{StorageRoom is a CMS system for Mobile Applications (iPhone, Android, BlackBerry, ...). This library gives you an ActiveModel-like interface to your data.}
   s.email = %q{sascha@thriventures.com}
   s.extra_rdoc_files = [
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "TODO",
     "VERSION",
     "examples/authentication.rb",
+    "examples/backup_uploads_from_export.rb",
     "examples/create_entry.rb",
     "examples/destroy_entry.rb",
     "examples/get_collections.rb",
@@ -72,6 +73,8 @@ Gem::Specification.new do |s|
     "lib/storage_room/webhook_call.rb",
     "spec/fixtures/collection.json",
     "spec/fixtures/collections.json",
+    "spec/fixtures/export_collection.json",
+    "spec/fixtures/export_entries.json",
     "spec/fixtures/image.png",
     "spec/fixtures/validation_error.json",
     "spec/fixtures/webhook_call.json",
