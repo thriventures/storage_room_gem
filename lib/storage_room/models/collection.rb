@@ -40,6 +40,11 @@ module StorageRoom
       end
     end
     
+    # Load all deleted entries of a collection
+    def deleted_entries
+      Array.load(self[:@deleted_entries_url])
+    end
+    
     # The field with a specific identifier
     def field(identifier)
       ensure_loaded do

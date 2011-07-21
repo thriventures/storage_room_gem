@@ -45,6 +45,14 @@ describe StorageRoom::Collection do
       end
     end
     
+    describe "#deleted_entries" do
+      it "should load" do
+        StorageRoom::Array.should_receive(:load)
+        @collection.deleted_entries
+      end
+      
+    end
+    
     describe "#entry_class_name" do
       it "should return string" do
         @collection.entry_class_name.should == 'Restaurant'

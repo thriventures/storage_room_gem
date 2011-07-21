@@ -1,3 +1,6 @@
+== Version 0.3.7
+* Added support for DeletedEntries
+
 == Version 0.3.6
 * Added methods to download files
 * Added example on how to download all files from an Export

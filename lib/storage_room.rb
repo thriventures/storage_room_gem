@@ -32,6 +32,7 @@ module StorageRoom
   
   autoload :Collection,               'storage_room/models/collection'
   autoload :Entry,                    'storage_room/models/entry'
+  autoload :DeletedEntry,             'storage_room/models/deleted_entry'
 
   autoload :Field,                    'storage_room/embeddeds/field'  
   
