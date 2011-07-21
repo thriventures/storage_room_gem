@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sascha Konietzke"]
-  s.date = %q{2011-07-19}
+  s.date = %q{2011-07-21}
   s.description = %q{StorageRoom is a CMS system for Mobile Applications (iPhone, Android, BlackBerry, ...). This library gives you an ActiveModel-like interface to your data.}
   s.email = %q{sascha@thriventures.com}
   s.extra_rdoc_files = [
@@ -66,6 +66,7 @@ Gem::Specification.new do |s|
     "lib/storage_room/identity_map.rb",
     "lib/storage_room/model.rb",
     "lib/storage_room/models/collection.rb",
+    "lib/storage_room/models/deleted_entry.rb",
     "lib/storage_room/models/entry.rb",
     "lib/storage_room/plugins.rb",
     "lib/storage_room/proxy.rb",
@@ -108,6 +109,7 @@ Gem::Specification.new do |s|
     "spec/storage_room/identity_map_spec.rb",
     "spec/storage_room/model_spec.rb",
     "spec/storage_room/models/collection_spec.rb",
+    "spec/storage_room/models/deleted_entry_spec.rb",
     "spec/storage_room/models/entry_spec.rb",
     "spec/storage_room/proxy_spec.rb",
     "spec/storage_room/resource_spec.rb",
