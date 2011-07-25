@@ -35,11 +35,11 @@ describe StorageRoom::Entry do
         end
       end
       
-      describe "#search" do
-        it "should load" do
-          pending
-        end
-      end
+      # describe "#search" do
+      #   it "should load" do
+      #     pending
+      #   end
+      # end
     end
     
   end

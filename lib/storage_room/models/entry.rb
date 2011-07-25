@@ -23,6 +23,16 @@ module StorageRoom
       def search(parameters = {})
         Array.load(search_path(parameters))
       end
+      
+      # Find multiple Entries by their IDs with one query
+      def find_by_ids(*ids)
+        find_by_urls(*ids.map{|id| show_path(id)})
+      end
+      
+      # Find multiple Entries by their URLs with one query
+      def find_by_urls(*urls)
+        search(:@url.in => urls)
+      end
     end
     
     # The collection of a entry

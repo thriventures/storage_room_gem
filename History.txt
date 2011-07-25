@@ -1,3 +1,6 @@
+== Version 0.3.8
+* Added symbol operator and array parameters
+
 == Version 0.3.7
 * Added support for DeletedEntries
 
