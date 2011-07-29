@@ -64,9 +64,9 @@ module StorageRoom
      
       def initialize_entry_class      
         name = self.entry_class_name
-    
+
         klass = if Object.is_constant_defined?(name.to_sym)  
-          name.constantize
+          name.constantize.tap{|k| raise "Class '#{name}' must inherit from StorageRoom::Entry" unless k.ancestors.include?(Entry)}
         else
           klass = Class.new(Entry) 
           Object.const_set(name, klass)

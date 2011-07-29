@@ -1,5 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
+class RaiseError
+end
+
 describe StorageRoom::Collection do
   before(:each) do
     @field = StorageRoom::StringField.new(:name => 'Name', :identifier => 'name')
@@ -96,6 +99,13 @@ describe StorageRoom::Collection do
         
         guidebook = klass.new(:name => 'NAME')
         guidebook.name.should == 'NAME'
+      end
+      
+      it "should raise an error if class doesn't inherit from StorageRoom::Entry" do
+        @collection.name = "RaiseError"
+        lambda {
+          klass = @collection.entry_class
+        }.should raise_error(RuntimeError)
       end
       
     end

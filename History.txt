@@ -1,3 +1,6 @@
+== Version 0.3.9
+* Added a check that already defined classes inherit from StorageRoom::Entry
+
 == Version 0.3.8
 * Added symbol operator and array parameters
 
