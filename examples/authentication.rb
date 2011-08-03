@@ -5,5 +5,5 @@ APPLICATION_API_KEY = 'fgK8Di4FYuRKtk2Xd12A' # your application's API key with r
 
 StorageRoom.authenticate(ACCOUNT_ID, APPLICATION_API_KEY)
 
-StorageRoom.server = "api.lvh.me:3000"
-# StorageRoom.server = "api.storageroomapp.com"
+# StorageRoom.server = "api.lvh.me:3000"
+StorageRoom.server = "api.storageroomapp.com"

@@ -5,6 +5,9 @@ module StorageRoom
     extend ActiveSupport::Concern
          
     included do
+      self.send(:extend, ::ActiveModel::Callbacks)
+      self.send(:define_model_callbacks, :initialize_from_response_data)
+      
       self.class_inheritable_accessor :attribute_options
       self.attribute_options ||= {}
     end
@@ -105,19 +108,21 @@ module StorageRoom
       
         # Iterate over the response data and initialize the attributes
         def initialize_from_response_data # :nodoc:
-          self.class.attribute_options.each do |name, options|
-            value = if options[:type] == :key
-              self[name].blank? ? options[:default] : self[name]
-            elsif options[:type] == :one
-              hash = self[name.to_s]
-              hash && hash['@type'] ? self.class.new_from_response_data(hash) : nil
-            elsif options[:type] == :many
-              response_data[name] && response_data[name].map{|hash| self.class.new_from_response_data(hash)} || []
-            else
-              raise "Invalid type: #{options[:type]}"
-            end
+          _run_initialize_from_response_data_callbacks do
+            self.class.attribute_options.each do |name, options|
+              value = if options[:type] == :key
+                self[name].blank? ? options[:default] : self[name]
+              elsif options[:type] == :one
+                hash = self[name.to_s]
+                hash && hash['@type'] ? self.class.new_from_response_data(hash) : nil
+              elsif options[:type] == :many
+                response_data[name] && response_data[name].map{|hash| self.class.new_from_response_data(hash)} || []
+              else
+                raise "Invalid type: #{options[:type]}"
+              end
 
-            send("#{name}=", value)
+              send("#{name}=", value)
+            end
           end
         end
         

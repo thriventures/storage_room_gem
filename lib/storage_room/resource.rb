@@ -3,6 +3,8 @@ module StorageRoom
   class Resource
     include HTTParty
     extend Plugins
+
+    
     
     include Accessors
     

@@ -1,7 +1,9 @@
 module StorageRoom
   class Entry < Model
     class_inheritable_accessor :collection
-        
+    
+    before_initialize_from_response_data :load_associated_collections
+    
     class << self         
       def index_path # :nodoc:
         "#{collection[:@url]}/entries"
@@ -35,6 +37,7 @@ module StorageRoom
       end
     end
     
+        
     # The collection of a entry
     def collection
       self.class.collection
@@ -48,6 +51,12 @@ module StorageRoom
     def id
       self[:@url] ? self[:@url].split('/').last : nil
     end
-
+    
+    protected
+      # Fetch all associated Collections before the Entry is initialized from the JSON document
+      def load_associated_collections # :nodoc:
+        collection.try(:load_associated_collections)
+      end
+    
   end
 end

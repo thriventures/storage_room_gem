@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sascha Konietzke"]
-  s.date = %q{2011-07-29}
+  s.date = %q{2011-08-03}
   s.description = %q{StorageRoom is a CMS system for Mobile Applications (iPhone, Android, BlackBerry, ...). This library gives you an ActiveModel-like interface to your data.}
   s.email = %q{sascha@thriventures.com}
   s.extra_rdoc_files = [
@@ -135,12 +135,14 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<webmock>, [">= 0"])
       s.add_runtime_dependency(%q<httparty>, [">= 0.6.1"])
       s.add_runtime_dependency(%q<activesupport>, [">= 3.0.0"])
+      s.add_runtime_dependency(%q<activemodel>, [">= 3.0.0"])
       s.add_runtime_dependency(%q<mime-types>, [">= 0"])
     else
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_dependency(%q<webmock>, [">= 0"])
       s.add_dependency(%q<httparty>, [">= 0.6.1"])
       s.add_dependency(%q<activesupport>, [">= 3.0.0"])
+      s.add_dependency(%q<activemodel>, [">= 3.0.0"])
       s.add_dependency(%q<mime-types>, [">= 0"])
     end
   else
@@ -148,6 +150,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<webmock>, [">= 0"])
     s.add_dependency(%q<httparty>, [">= 0.6.1"])
     s.add_dependency(%q<activesupport>, [">= 3.0.0"])
+    s.add_dependency(%q<activemodel>, [">= 3.0.0"])
     s.add_dependency(%q<mime-types>, [">= 0"])
   end
 end

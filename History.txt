@@ -1,3 +1,7 @@
+== Version 0.3.10
+* Fixed cyclic dependency when preloading associated Collections 
+* Added create, update, save and destroy callbacks to Models
+
 == Version 0.3.9
 * Added a check that already defined classes inherit from StorageRoom::Entry
 

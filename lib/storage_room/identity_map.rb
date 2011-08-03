@@ -26,7 +26,7 @@ module StorageRoom
         return nil if url.nil?
         
         if identity_map_on? && object = identity_map[url]
-          StorageRoom.log("Loaded #{object} from identity map (load)")
+          StorageRoom.log("Loaded #{object} (#{url}) from identity map (load)")
           object
         else
           super
@@ -39,7 +39,7 @@ module StorageRoom
         object = url ? identity_map[url] : nil
 
         if object.present? && identity_map_on?
-          StorageRoom.log("Loaded #{object} from identity map (new_from_response_data)")
+          StorageRoom.log("Loaded #{object} (#{url}) from identity map (new_from_response_data)")
           object.set_from_response_data(response_data) 
         else
           object = super

@@ -6,12 +6,16 @@ module StorageRoom
     def add_to_entry_class(klass) # :nodoc:
       super
       
-      collection
+     # collection
     end
     
     # The target collection of the association field
     def collection
       @collection ||= Collection.load(self.collection_url)
+    end
+    
+    def collection_loaded?
+      @collection ? true : false
     end
   end
 end

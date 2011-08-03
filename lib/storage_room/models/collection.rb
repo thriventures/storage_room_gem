@@ -7,6 +7,7 @@ module StorageRoom
     many :fields
     many :webhook_definitions
     
+    
     class << self                  
       def index_path # :nodoc:
         "#{Resource.base_uri}/collections"
@@ -55,6 +56,22 @@ module StorageRoom
       
       nil
     end
+    
+    # All fields of type AssociationField
+    def association_fields
+      fields.select{|f| f.is_a?(AssociationField)}
+    end
+    
+    # Load all Collections that are related to the current one through AssociationFields
+    def load_associated_collections
+      array = association_fields
+
+      if array.map{|f| f.collection_loaded?}.include?(false)
+        StorageRoom.log("Fetching associated collections for '#{name}'")
+        array.each{|f| f.collection}
+      end
+    end
+
     
     protected   
       def initialize_from_response_data

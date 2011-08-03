@@ -1,6 +1,8 @@
 module StorageRoom
   # Abstract superclass for classes that can persist to the remote servers
   class Model < Resource  
+    define_model_callbacks :create, :update, :save, :destroy
+    
     attr_accessor :skip_webhooks
       
     class << self
@@ -62,23 +64,33 @@ module StorageRoom
     # Create a new model on the server
     def create
       return false unless new_record?
-      httparty = self.class.post(self.class.index_path, :body => to_json, :query => query_parameters)
-      handle_save_response(httparty)
+      _run_save_callbacks do
+        _run_create_callbacks do
+          httparty = self.class.post(self.class.index_path, :body => to_json, :query => query_parameters)
+          handle_save_response(httparty)
+        end
+      end
     end
     
     # Update an existing model on the server
     def update
       return false if new_record?
-      httparty = self.class.put(self[:@url], :body => to_json, :query => query_parameters)
-      handle_save_response(httparty)
+      _run_save_callbacks do
+        _run_update_callbacks do
+          httparty = self.class.put(self[:@url], :body => to_json, :query => query_parameters)
+          handle_save_response(httparty)
+        end
+      end
     end
     
     # Delete an existing model on the server
     def destroy
       return false if new_record?
       
-      httparty = self.class.delete(self[:@url], :query => query_parameters)
-      self.class.handle_critical_response_errors(httparty)
+      _run_destroy_callbacks do
+        httparty = self.class.delete(self[:@url], :query => query_parameters)
+        self.class.handle_critical_response_errors(httparty)
+      end
       
       true
     end

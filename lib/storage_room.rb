@@ -6,6 +6,7 @@ begin; require 'rubygems'; rescue LoadError; end
 require 'httparty'
 require 'mime/types'
 require 'base64'
+require 'active_model'
 require 'active_support/all' 
 require 'storage_room/extensions/const_defined'
 require 'storage_room/extensions/symbol'
