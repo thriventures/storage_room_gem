@@ -146,6 +146,11 @@ module StorageRoom
     end
     
     module ClassMethods 
+      # Is the passed hash of response data a real object or only an association with a URL but no actual data
+      def response_data_is_association?(hash)
+        hash.size == 2 && hash.include?('@type') && hash.include?('url')
+      end
+      
       # Load an object with the specified URL from the API
       def load(url, parameters = {})
         return nil if url.blank?

@@ -37,6 +37,12 @@ This is a walkthrough with all steps you need to setup a devise entry, including
 
 You can find the documentation at http://rdoc.info/github/thriventures/storage_room_gem.
 
+== Long Running Processes
+
+The gem caches responses from the API. If you have a long-running process such as a server or worker you probably want fresh data and you should clear the cache before each request:
+
+  StorageRoom::IdentityMap.clear
+
 == More Examples
 
 See the examples folder.

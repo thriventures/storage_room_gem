@@ -1,3 +1,6 @@
+== Version 0.3.11
+* Fixed another cyclic dependency bug
+
 == Version 0.3.10
 * Fixed cyclic dependency when preloading associated Collections 
 * Added create, update, save and destroy callbacks to Models

@@ -11,7 +11,7 @@ end
 
 describe StorageRoom::TestAccessors do
   context "Class" do
-    describe "new_from_json_file" do
+    describe "#new_from_json_file" do
       it "should open file" do
         path = fixture_path('export_collection.json')
         object = StorageRoom::Resource.new_from_json_file(path)
@@ -19,6 +19,22 @@ describe StorageRoom::TestAccessors do
       end
     end
     
+    describe "#response_data_is_association?" do
+      it "should return true" do
+        hash = {'@type' => 'Tour', 'url' => 'URL'}
+        StorageRoom::Resource.response_data_is_association?(hash).should be_true
+      end
+      
+      it "should return false for too many keys" do
+        hash = {'@type' => 'Tour', 'url' => 'URL', 'more' => 3}
+        StorageRoom::Resource.response_data_is_association?(hash).should be_false
+      end
+      
+      it "should return false for wrong keys" do
+        hash = {'@type' => 'Tour', 'more' => 3}
+        StorageRoom::Resource.response_data_is_association?(hash).should be_false
+      end
+    end
   end
   
   

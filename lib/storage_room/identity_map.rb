@@ -37,10 +37,14 @@ module StorageRoom
       def new_from_response_data(response_data)        
         url = response_data['@url'] || response_data['url']
         object = url ? identity_map[url] : nil
-
+                
         if object.present? && identity_map_on?
-          StorageRoom.log("Loaded #{object} (#{url}) from identity map (new_from_response_data)")
-          object.set_from_response_data(response_data) 
+          if object.loaded? && response_data_is_association?(response_data)
+            StorageRoom.log("Loaded #{object} (#{url}) from identity map (new_from_response_data)")
+          else
+            StorageRoom.log("Loaded #{object} (#{url}) from identity map and updated attributes (new_from_response_data)")
+            object.set_from_response_data(response_data) 
+          end
         else
           object = super
           if identity_map_on? && url.present? && object.is_a?(Model)

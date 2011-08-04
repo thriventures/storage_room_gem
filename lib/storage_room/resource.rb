@@ -4,8 +4,6 @@ module StorageRoom
     include HTTParty
     extend Plugins
 
-    
-    
     include Accessors
     
     plugin IdentityMap
