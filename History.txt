@@ -1,3 +1,6 @@
+== Version 0.3.12
+* Reset Resource after reloading
+
 == Version 0.3.11
 * Fixed another cyclic dependency bug
 
