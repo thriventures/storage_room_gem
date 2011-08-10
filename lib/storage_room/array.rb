@@ -32,7 +32,7 @@ module StorageRoom
     end
     
     # Iterate over all resources with pagination
-    def each_page_each_item(args={})
+    def each_page_each_resource(args={})
       self.each_page(args) do |page|
         page.resources.each do |item|
           yield(item)

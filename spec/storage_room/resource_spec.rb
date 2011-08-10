@@ -76,6 +76,25 @@ describe StorageRoom::Resource do
           }.should raise_error(StorageRoom::RequestFailedError)
         end
       end
+      
+      describe "#reload" do
+        it "should reset attributes before reload" do
+          array = StorageRoom::Array.new
+          array.response_data[:@next_page_url] = '/collections/1/entries?page=2'
+          array.response_data[:@url] = '/collections/1/entries'
+          hash = {:array => {:@url => '/collections/1/entries?page=2', :@previous_page_url => '/collections/1/entries?page=1'}}
+          
+          stub_request(:get, stub_url('/collections/1/entries')).to_return(:body => hash.to_json, :status => 200)
+
+          array[:@next_page_url].should be_present
+          array[:@previous_page_url].should be_nil
+
+          array.reload
+          
+          array[:@next_page_url].should be_nil
+          array[:@previous_page_url].should be_present
+        end
+      end
             
       describe "#meta_data?" do
         it "should detect" do

@@ -30,7 +30,9 @@ module StorageRoom
     # Reload an object from the API. Optionally pass an URL.
     def reload(url = nil, parameters = {})
       httparty = self.class.get(url || self[:@url], parameters)
-      set_from_response_data(httparty.parsed_response.first[1])
+      hash = httparty.parsed_response.first[1]
+      reset!
+      set_from_response_data(hash)
       true
     end
     
