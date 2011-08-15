@@ -6,7 +6,7 @@ end
 describe StorageRoom::Collection do
   before(:each) do
     @field = StorageRoom::StringField.new(:name => 'Name', :identifier => 'name')
-    @collection = StorageRoom::Collection.new(:name => 'Restaurant', :fields => [@field])
+    @collection = StorageRoom::Collection.new(:name => 'Restaurant', :entry_type => 'Restaurant', :fields => [@field])
     @collection.response_data[:@version] = 1
     @collection.response_data[:@url] = "URL"
     
@@ -103,6 +103,7 @@ describe StorageRoom::Collection do
       
       it "should raise an error if class doesn't inherit from StorageRoom::Entry" do
         @collection.name = "RaiseError"
+        @collection.entry_type = "RaiseError"
         lambda {
           klass = @collection.entry_class
         }.should raise_error(RuntimeError)

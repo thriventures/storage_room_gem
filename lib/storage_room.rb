@@ -104,7 +104,7 @@ module StorageRoom
     end
     
     def entry_class_for_name(name) #:nodoc:
-      self.entry_class_mappings[name] || name.gsub(/\s+/, "").classify
+      self.entry_class_mappings[name] || name
     end
     
     def version

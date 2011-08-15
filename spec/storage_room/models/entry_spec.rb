@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 describe StorageRoom::Entry do
   before(:each) do
     @string_field = StorageRoom::StringField.new(:name => 'Name', :identifier => 'name')
-    @collection = StorageRoom::Collection.new(:name => 'Report', :fields => [@string_field])
+    @collection = StorageRoom::Collection.new(:name => 'Report', :entry_type => 'Report', :fields => [@string_field])
     @collection.response_data[:@url] = '/collections/COLLECTION_ID'
     @collection.entry_class
   end

@@ -2,6 +2,7 @@ module StorageRoom
   # A collection is used to define the structure of a data set. 
   class Collection < Model      
     key :name
+    key :entry_type
     key :primary_field_identifier
     
     many :fields
@@ -24,7 +25,7 @@ module StorageRoom
     
     # The class name of the collection's entries, can be overridden with a mapping
     def entry_class_name
-      ensure_loaded { StorageRoom.entry_class_for_name(name)}
+      ensure_loaded { StorageRoom.entry_class_for_name(entry_type)}
     end
     
     # The class for the collection's entries

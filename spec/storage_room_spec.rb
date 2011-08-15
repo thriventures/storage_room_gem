@@ -107,7 +107,7 @@ describe StorageRoom do
     end
     
     it "should return without mapping" do
-      StorageRoom.entry_class_for_name('Restaurant Visits').should == 'RestaurantVisit'      
+      StorageRoom.entry_class_for_name('RestaurantVisit').should == 'RestaurantVisit'      
     end
   end
   
