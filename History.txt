@@ -1,3 +1,6 @@
+== Version 0.3.15
+* Fix identity map problem on Windows
+
 == Version 0.3.14
 * Fix deprecation warnings (class_inheritable_accessor)
 
