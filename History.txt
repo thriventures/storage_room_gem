@@ -1,3 +1,6 @@
+== Version 0.3.14
+* Fix deprecation warnings (class_inheritable_accessor)
+
 == Version 0.3.13
 * Added entry_type to Collection
 
