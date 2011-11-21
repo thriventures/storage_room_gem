@@ -15,7 +15,7 @@ describe StorageRoom::IdentityMap do
     describe "#models" do
       it "should return set" do
         set = StorageRoom::IdentityMap.models
-        set.should be_an_instance_of(Set)
+        set.should be_an_instance_of(::Set)
         set.should include(StorageRoom::Resource)
       end
     end

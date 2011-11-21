@@ -8,7 +8,7 @@ module StorageRoom
     end
     
     def self.models
-      @models ||= Set.new
+      @models ||= ::Set.new
     end
 
     def self.clear
