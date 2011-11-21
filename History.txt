@@ -1,3 +1,6 @@
+== Version 0.3.16
+* Fix identity map problem on Windows (require 'set')
+
 == Version 0.3.15
 * Fix identity map problem on Windows
 

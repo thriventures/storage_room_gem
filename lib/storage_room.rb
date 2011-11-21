@@ -4,6 +4,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 begin; require 'rubygems'; rescue LoadError; end
 
 require 'httparty'
+require 'set'
 require 'mime/types'
 require 'base64'
 require 'active_model'
