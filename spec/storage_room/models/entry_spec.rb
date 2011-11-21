@@ -1,5 +1,13 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
+class TestEntry2 < StorageRoom::Entry
+  self.collection = 1
+end
+
+class TestEntry3 < StorageRoom::Entry
+  self.collection = 2
+end
+
 describe StorageRoom::Entry do
   before(:each) do
     @string_field = StorageRoom::StringField.new(:name => 'Name', :identifier => 'name')
@@ -32,6 +40,14 @@ describe StorageRoom::Entry do
         it "should be defined" do
           StorageRoom::Entry.json_name.should == 'entry'
           Report.json_name.should == 'entry'
+        end
+      end
+      
+      describe "#collection" do
+        it "should return correct collection for subclasses" do
+          @collection.entry_class.collection.should == @collection
+          TestEntry2.collection.should == 1
+          TestEntry3.collection.should == 2
         end
       end
       

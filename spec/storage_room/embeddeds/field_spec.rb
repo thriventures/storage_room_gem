@@ -7,7 +7,7 @@ describe StorageRoom::Field do
   
   context "Configuration" do
     it "should have keys" do
-      keys = StorageRoom::Field.attribute_options.keys
+      keys = StorageRoom::Field.attribute_options_including_superclasses.keys
       
       [:name, :identifier, :interface, :hint, :input_type, :required, :unique, :maximum_length, :minimum_length, :minimum_number, :maximum_number, :minimum_size, :maximum_size].each do |key|
         keys.should include(key)

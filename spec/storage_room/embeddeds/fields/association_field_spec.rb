@@ -7,7 +7,7 @@ describe StorageRoom::AssociationField do
   
   context "Configuration" do
     it "should have keys" do
-      keys = StorageRoom::AssociationField.attribute_options.keys
+      keys = StorageRoom::AssociationField.attribute_options_including_superclasses.keys
       
       [:collection_url].each do |key|
         keys.should include(key)

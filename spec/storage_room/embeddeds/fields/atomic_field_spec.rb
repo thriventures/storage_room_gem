@@ -7,7 +7,7 @@ describe StorageRoom::AtomicField do
   
   context "Configuration" do
     it "should have keys" do
-      keys = StorageRoom::AtomicField.attribute_options.keys
+      keys = StorageRoom::AtomicField.attribute_options_including_superclasses.keys
       
       [:default_value, :choices, :include_blank_choice].each do |key|
         keys.should include(key)

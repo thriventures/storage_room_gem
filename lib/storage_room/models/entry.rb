@@ -1,6 +1,6 @@
 module StorageRoom
   class Entry < Model
-    class_inheritable_accessor :collection
+    class_attribute :collection
     
     before_initialize_from_response_data :load_associated_collections
     

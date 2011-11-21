@@ -7,6 +7,19 @@ module StorageRoom
     key :test
     key :test2
   end
+  
+  class TestAccessors2 < TestAccessors
+    key :test3
+  end
+  
+  class TestAccessors3 < TestAccessors
+    key :test4
+    key :test5
+  end
+  
+  class TestAccessors4 < TestAccessors3
+    key :test6
+  end
 end
 
 describe StorageRoom::TestAccessors do
@@ -33,6 +46,49 @@ describe StorageRoom::TestAccessors do
       it "should return false for wrong keys" do
         hash = {'@type' => 'Tour', 'more' => 3}
         StorageRoom::Resource.response_data_is_association?(hash).should be_false
+      end
+    end
+    
+    describe "Inheritance" do
+      it "should have correct attribute_options hash" do
+        StorageRoom::TestAccessors.attribute_options.should have(2).items
+        StorageRoom::TestAccessors.attribute_options[:test].should be_present
+        StorageRoom::TestAccessors.attribute_options[:test2].should be_present
+        
+        StorageRoom::TestAccessors.attribute_options_including_superclasses.should have(2).items
+        StorageRoom::TestAccessors.attribute_options_including_superclasses[:test].should be_present
+        StorageRoom::TestAccessors.attribute_options_including_superclasses[:test2].should be_present
+
+        #
+        StorageRoom::TestAccessors2.attribute_options.should have(1).item
+        StorageRoom::TestAccessors2.attribute_options[:test3].should be_present
+
+        StorageRoom::TestAccessors2.attribute_options_including_superclasses.should have(3).items
+        StorageRoom::TestAccessors2.attribute_options_including_superclasses[:test].should be_present
+        StorageRoom::TestAccessors2.attribute_options_including_superclasses[:test2].should be_present
+        StorageRoom::TestAccessors2.attribute_options_including_superclasses[:test3].should be_present
+        
+        #
+        StorageRoom::TestAccessors3.attribute_options.should have(2).item
+        StorageRoom::TestAccessors3.attribute_options[:test4].should be_present
+        StorageRoom::TestAccessors3.attribute_options[:test5].should be_present
+        
+        StorageRoom::TestAccessors3.attribute_options_including_superclasses.should have(4).items
+        StorageRoom::TestAccessors3.attribute_options_including_superclasses[:test].should be_present
+        StorageRoom::TestAccessors3.attribute_options_including_superclasses[:test2].should be_present
+        StorageRoom::TestAccessors3.attribute_options_including_superclasses[:test4].should be_present
+        StorageRoom::TestAccessors3.attribute_options_including_superclasses[:test5].should be_present
+        
+        #
+        StorageRoom::TestAccessors4.attribute_options.should have(1).item
+        StorageRoom::TestAccessors4.attribute_options[:test6].should be_present
+        
+        StorageRoom::TestAccessors4.attribute_options_including_superclasses.should have(5).items
+        StorageRoom::TestAccessors4.attribute_options_including_superclasses[:test].should be_present
+        StorageRoom::TestAccessors4.attribute_options_including_superclasses[:test2].should be_present
+        StorageRoom::TestAccessors4.attribute_options_including_superclasses[:test4].should be_present
+        StorageRoom::TestAccessors4.attribute_options_including_superclasses[:test5].should be_present
+        StorageRoom::TestAccessors4.attribute_options_including_superclasses[:test6].should be_present
       end
     end
   end

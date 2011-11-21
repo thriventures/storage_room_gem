@@ -7,7 +7,7 @@ describe StorageRoom::Location do
   
   context "Configuration" do
     it "should have keys" do
-      keys = StorageRoom::Location.attribute_options.keys
+      keys = StorageRoom::Location.attribute_options_including_superclasses.keys
       
       [:lat, :lng].each do |key|
         keys.should include(key)

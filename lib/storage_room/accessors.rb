@@ -7,9 +7,6 @@ module StorageRoom
     included do
       self.send(:extend, ::ActiveModel::Callbacks)
       self.send(:define_model_callbacks, :initialize_from_response_data)
-      
-      self.class_inheritable_accessor :attribute_options
-      self.attribute_options ||= {}
     end
     
     module InstanceMethods
@@ -109,7 +106,7 @@ module StorageRoom
         # Iterate over the response data and initialize the attributes
         def initialize_from_response_data # :nodoc:
           _run_initialize_from_response_data_callbacks do
-            self.class.attribute_options.each do |name, options|
+            self.class.attribute_options_including_superclasses.each do |name, options|
               value = if options[:type] == :key
                 self[name].blank? ? options[:default] : self[name]
               elsif options[:type] == :one
@@ -215,6 +212,17 @@ module StorageRoom
         end
         
         self.attribute_options[name] = options
+      end
+            
+      def attribute_options
+        @attribute_options ||= {}
+      end
+      
+      def attribute_options_including_superclasses        
+        hash = attribute_options.dup
+        hash.merge!(superclass.attribute_options_including_superclasses) if superclass.respond_to?(:attribute_options_including_superclasses)
+        
+        hash
       end
     end
     
