@@ -93,29 +93,29 @@ module StorageRoom
       
     end
     
-    module InstanceMethods
-      def identity_map
-        self.class.identity_map
-      end
-      
-      def in_identity_map?
-        return false if self[:@url].blank?
-        identity_map.include?(self[:@url])
-      end
-      
-      def create(*args)
-        if result = super
-          identity_map[self[:@url]] = self if self.class.identity_map_on?
-        end
-        result
-      end
-      
-      def destroy 
-         identity_map.delete(self[:@url]) if self.class.identity_map_on?
-         super
-       end
-      
+
+    def identity_map
+      self.class.identity_map
     end
+    
+    def in_identity_map?
+      return false if self[:@url].blank?
+      identity_map.include?(self[:@url])
+    end
+    
+    def create(*args)
+      if result = super
+        identity_map[self[:@url]] = self if self.class.identity_map_on?
+      end
+      result
+    end
+    
+    def destroy 
+     identity_map.delete(self[:@url]) if self.class.identity_map_on?
+     super
+    end
+    
+
   end
 end
 
