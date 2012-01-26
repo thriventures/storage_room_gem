@@ -5,7 +5,6 @@
 
 == Version X
 
-- have a gemfile?
 - make on/many only accept objects of correct class?
 - executable/cli
 - arguments with identity map  
