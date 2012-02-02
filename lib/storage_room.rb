@@ -136,9 +136,9 @@ module StorageRoom
       rescue NameError # could contain spaces etc.
       end
         
-      if Object.is_constant_defined?(name_with_mapping)
-        name_with_mapping.constantize
-      else
+      begin
+        return name_with_mapping.constantize
+      rescue NameError
         raise ClassNotFoundError.new("Unknown class: #{name}")
       end
     end
