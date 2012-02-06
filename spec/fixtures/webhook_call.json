@@ -10,7 +10,12 @@
       "@updated_at": "2011-07-14T18:25:42Z", 
       "@url": "http:\/\/api.storageroomapp.com\/accounts\/4e1e9c234250712eba000052\/collections\/4e1e9c234250712eba000062\/entries\/4e1f3259425071435e00004a", 
       "@version": 2, 
-      "text": "WEBHOOK TEST"
+      "text": "WEBHOOK TEST",
+      "location": {
+        "@type": "Location",
+        "lat": 1.2,
+        "lng": 2.3
+      }
     }, 
     "@event": "update", 
     "@last_attempt_at": null, 

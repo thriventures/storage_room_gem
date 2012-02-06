@@ -2,6 +2,8 @@ require 'spec_helper'
 
 class Announcement < StorageRoom::Entry
   key :text
+  
+  one :location
 end
 
 describe StorageRoom::WebhookCall do
@@ -19,6 +21,9 @@ describe StorageRoom::WebhookCall do
       webhook_call[:@event].should == 'update'
       webhook_call.entry.should be_an_instance_of(Announcement)
       webhook_call.entry.text.should == 'WEBHOOK TEST'
+      webhook_call.entry.location.should be_an_instance_of(StorageRoom::Location)
+      webhook_call.entry.location.lat.should == 1.2
+      webhook_call.entry.location.lng.should == 2.3
     end
   end
 end
