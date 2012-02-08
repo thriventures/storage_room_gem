@@ -164,6 +164,54 @@ describe StorageRoom::TestAccessors do
       end
     end
     
+    describe "#eql?" do
+      it "should return true for same class and same attributes but different object ids" do
+        one = StorageRoom::TestAccessors3.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => nil, :test5 => {:key => 'value'})
+        two = StorageRoom::TestAccessors3.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => nil, :test5 => {:key => 'value'})
+        
+        one.eql?(two).should be_true
+      end
+      
+      it "should return false for same class and different attributes" do
+        one = StorageRoom::TestAccessors3.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => nil, :test5 => {:key => 'value'})
+        two = StorageRoom::TestAccessors3.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => 1, :test5 => {:key => 'value'})
+        
+        one.eql?(two).should be_false
+      end
+      
+      it "should return false for different classes" do
+        one = StorageRoom::TestAccessors3.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => nil, :test5 => {:key => 'value'})
+        two = StorageRoom::TestAccessors2.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => nil, :test5 => {:key => 'value'})
+        
+        one.eql?(two).should be_false
+        one.eql?('asdf').should be_false
+      end
+    end
+    
+    describe "#hash" do
+      it "should return same hash for same class and same attributes" do
+        one = StorageRoom::TestAccessors3.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => nil, :test5 => {:key => 'value'})
+        two = StorageRoom::TestAccessors3.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => nil, :test5 => {:key => 'value'})
+        
+        one.hash.should == two.hash
+      end
+      
+      it "should return different hash for same class and different attributes" do
+        one = StorageRoom::TestAccessors3.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => nil, :test5 => {:key => 'value'})
+        two = StorageRoom::TestAccessors3.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => 1, :test5 => {:key => 'value'})
+        
+        one.hash.should_not == two.hash
+      end
+      
+      it "should return different hash for different classes" do
+        one = StorageRoom::TestAccessors3.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => nil, :test5 => {:key => 'value'})
+        two = StorageRoom::TestAccessors2.new(:test => 1, :test2 => '2', :test3 => ['tag1', 'tag2'], :test4 => nil, :test5 => {:key => 'value'})
+        
+        one.hash.should_not == two.hash
+        one.hash.should_not == 'asdf'.hash
+      end
+    end
+    
     describe "#reset!" do
       it "should reset" do  
         @test.response_data = {'test' => 1}      

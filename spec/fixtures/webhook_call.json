@@ -15,6 +15,10 @@
         "@type": "Location",
         "lat": 1.2,
         "lng": 2.3
+      },
+      "shop": {
+        "@type": "Shop",
+        "url": "http:\/\/api.storageroomapp.com\/accounts\/4e1e9c234250712eba000052\/collections\/4e1e9c234250712eba000063\/entries\/4e1f3259425071435e000099"
       }
     }, 
     "@event": "update", 

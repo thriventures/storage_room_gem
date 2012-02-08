@@ -1,3 +1,6 @@
+== Version 0.3.19
+* Add eql?, == and hash methods to Resources to compare them
+
 == Version 0.3.18
 * Rescue NameErrors when finding classes
 

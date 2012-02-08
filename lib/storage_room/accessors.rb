@@ -91,10 +91,7 @@ module StorageRoom
 
         hash
       end
-    end# ==========
-    # = Banner =
-    # ==========
-    
+    end
 
     # Optionally pass attributes to set up the object
     def initialize(hash={})     
@@ -175,6 +172,17 @@ module StorageRoom
     
     def proxy? # :nodoc:
       false
+    end
+    
+    # Compare Resources by comparing their attributes
+    def eql?(object)
+      self.class.equal?(object.class) && attributes == object.attributes
+    end
+    
+    alias == eql?  
+    
+    def hash
+      self.class.hash ^ self.attributes.hash
     end
     
     protected
