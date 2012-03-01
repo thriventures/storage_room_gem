@@ -15,7 +15,7 @@ module StorageRoom
       # Handle known server errors
       def handle_critical_response_errors(httparty) # :nodoc:
         case httparty.response.code
-          when '200', '201', '409', '422' then true
+          when '200', '201', '204', '409', '422' then true
           else
             raise StorageRoom::RequestFailedError.new("Invalid HTTP Response: #{httparty.response.code}")
         end

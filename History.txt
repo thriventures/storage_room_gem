@@ -1,3 +1,9 @@
+== Version 0.3.21
+* Accept HTTP 204 status codes
+
+== Version 0.3.20
+* Use a newer version of ActiveSupport
+
 == Version 0.3.19
 * Add eql?, == and hash methods to Resources to compare them
 
