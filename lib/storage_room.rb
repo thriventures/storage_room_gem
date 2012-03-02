@@ -12,9 +12,10 @@ require 'active_support/all'
 require 'storage_room/extensions/const_defined'
 require 'storage_room/extensions/symbol'
 
+require "storage_room/version"
 require 'storage_room/plugins'
 
-module StorageRoom  
+module StorageRoom    
   class AbstractMethodError      < RuntimeError; end
   class RequestFailedError       < RuntimeError; end
   class ResourceNotLoadedError   < RuntimeError; end
@@ -109,7 +110,7 @@ module StorageRoom
     end
     
     def version
-      @version ||= ::File.read(::File.expand_path(::File.join(::File.dirname(__FILE__), '..', 'VERSION')))
+      StorageRoom::VERSION
     end
     
     # Requests are made with SSL

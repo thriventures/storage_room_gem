@@ -1,3 +1,6 @@
+== Version 0.3.22
+* Move from Jeweler to Bundler for gem management
+
 == Version 0.3.21
 * Accept HTTP 204 status codes
 
