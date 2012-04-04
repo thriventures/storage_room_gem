@@ -68,7 +68,7 @@ module StorageRoom
 
 
   class << self
-    attr_reader :api_key, :user_agent, :account_id, :ssl, :proxy_server, :proxy_port
+    attr_reader :api_key, :user_agent, :account_id, :ssl, :proxy_server, :proxy_port, :timeout
     attr_accessor :debug
     
     # Authenticate once before making any requests with your account id and the application's api key
@@ -93,6 +93,22 @@ module StorageRoom
     
     def server #:nodoc:
       @server || 'api.storageroomapp.com'
+    end
+    
+    # Change the connection timeout
+    def timeout=(timeout) #:nodoc:
+      @timeout = timeout
+    end
+    
+    def timeout #:nodoc:
+      @timeout || 10
+    end
+    
+    # Return the request options used by HTTParty
+    def request_options
+      {
+        :timeout => timeout
+      }
     end
     
     # Hash of all mappings from an Entry's @type to a local Ruby class, if a mapping doesn't exist a class name will be created automatically

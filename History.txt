@@ -1,3 +1,6 @@
+== Version 0.3.23
+* Support the configuration of a custom connection timeout
+
 == Version 0.3.22
 * Move from Jeweler to Bundler for gem management
 

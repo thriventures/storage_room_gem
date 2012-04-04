@@ -66,7 +66,7 @@ module StorageRoom
       return false unless new_record?
       _run_save_callbacks do
         _run_create_callbacks do
-          httparty = self.class.post(self.class.index_path, :body => to_json, :query => query_parameters)
+          httparty = self.class.post(self.class.index_path, request_options.merge(:body => to_json))
           handle_save_response(httparty)
         end
       end
@@ -77,7 +77,7 @@ module StorageRoom
       return false if new_record?
       _run_save_callbacks do
         _run_update_callbacks do
-          httparty = self.class.put(self[:@url], :body => to_json, :query => query_parameters)
+          httparty = self.class.put(self[:@url], request_options.merge(:body => to_json))
           handle_save_response(httparty)
         end
       end
@@ -88,7 +88,7 @@ module StorageRoom
       return false if new_record?
       
       _run_destroy_callbacks do
-        httparty = self.class.delete(self[:@url], :query => query_parameters)
+        httparty = self.class.delete(self[:@url], request_options)
         self.class.handle_critical_response_errors(httparty)
       end
       
@@ -136,6 +136,10 @@ module StorageRoom
       
       def query_parameters
         skip_webhooks ? {:skip_webhooks => true} : nil
+      end
+      
+      def request_options
+        StorageRoom.request_options.merge(:query => query_parameters)
       end
 
       

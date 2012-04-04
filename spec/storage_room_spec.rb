@@ -57,6 +57,24 @@ describe StorageRoom do
     end
   end
   
+  describe "#timeout" do    
+    it "return default timeout" do
+      StorageRoom.timeout.should == 10
+    end
+    
+    it "should set variables" do
+      StorageRoom.timeout = 20
+      StorageRoom.timeout.should == 20
+      StorageRoom.timeout = 10
+    end
+  end
+  
+  describe "#request_options" do
+    it "should return a hash" do
+      StorageRoom.request_options[:timeout].should == 10
+    end
+  end
+  
   describe "#ssl" do
     before(:each) do
       StorageRoom.ssl = true

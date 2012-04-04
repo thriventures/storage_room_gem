@@ -2,13 +2,17 @@
 
 require File.join(File.dirname(__FILE__), 'authentication')
 
-path = ::File.expand_path(File.join(File.dirname(__FILE__) + '..', 'spec', 'fixtures', 'image.png'))
-collection = StorageRoom::Collection.find('4e034b8db65245b72600002b')
+path = ::File.expand_path(File.join(File.dirname(__FILE__), '..', 'spec', 'fixtures', 'image.png'))
+
+collection = StorageRoom::Collection.find('4f7c9fa6421aa9e48a000092')
 
 # Upload Image or File
-entry = collection.entry_class.new(:name => "StorageRoom Logo", :image => StorageRoom::Image.new_with_filename(path))
+entry = collection.entry_class.new(:name => "StorageRoom Logo", :file => StorageRoom::Image.new_with_filename(path))
 
-if entry.save 
+# optionally change the request timeout if you upload big files
+StorageRoom.timeout = 100
+
+if entry.save
   puts "Entry saved (#{entry[:@url]})"
   puts "URL of the uploaded image is #{entry.image.url}"
   puts "URL of the automatically generated thumbnail is #{entry.image.url(:thumbnail)}" # Multiple Image Versions can be specified in the interface
