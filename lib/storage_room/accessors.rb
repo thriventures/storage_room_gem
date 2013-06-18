@@ -199,7 +199,7 @@ module StorageRoom
 
       # Iterate over the response data and initialize the attributes
       def initialize_from_response_data # :nodoc:
-        _run_initialize_from_response_data_callbacks do
+        run_callbacks :initialize_from_response_data do
           self.class.attribute_options_including_superclasses.each do |name, options|
             value = if options[:type] == :key
               self[name].blank? ? options[:default] : self[name]

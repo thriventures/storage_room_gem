@@ -64,8 +64,8 @@ module StorageRoom
     # Create a new model on the server
     def create
       return false unless new_record?
-      _run_save_callbacks do
-        _run_create_callbacks do
+      run_callbacks :save do
+        run_callbacks :create do
           httparty = self.class.post(self.class.index_path, request_options.merge(:body => to_json))
           handle_save_response(httparty)
         end
@@ -75,8 +75,8 @@ module StorageRoom
     # Update an existing model on the server
     def update
       return false if new_record?
-      _run_save_callbacks do
-        _run_update_callbacks do
+      run_callbacks :save do
+        run_callbacks :update do
           httparty = self.class.put(self[:@url], request_options.merge(:body => to_json))
           handle_save_response(httparty)
         end
@@ -87,7 +87,7 @@ module StorageRoom
     def destroy
       return false if new_record?
 
-      _run_destroy_callbacks do
+      run_callbacks :destroy do
         httparty = self.class.delete(self[:@url], request_options)
         self.class.handle_critical_response_errors(httparty)
       end
