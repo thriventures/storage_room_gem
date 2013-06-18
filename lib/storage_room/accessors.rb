@@ -1,15 +1,15 @@
 module StorageRoom
-  
+
   # Module that contains attributes methods shared between StorageRoom::Resource and StorageRoom::Embedded
   module Accessors
     extend ActiveSupport::Concern
-         
+
     included do
       self.send(:extend, ::ActiveModel::Callbacks)
       self.send(:define_model_callbacks, :initialize_from_response_data)
     end
-    
-    module ClassMethods 
+
+    module ClassMethods
       # Is the passed hash of response data a real object or only an association with a URL but no actual data
       def response_data_is_association?(hash)
         hash.size == 2 && hash.include?('@type') && hash.include?('url')
@@ -62,14 +62,14 @@ module StorageRoom
         define_attribute_methods(name, options)
       end
 
-      # Defines a to-many association for a Resource (embedded or association)      
+      # Defines a to-many association for a Resource (embedded or association)
       def many(name, options = {})
         options.merge!(:type => :many, :default => [])
         define_attribute_methods(name, options)
       end
 
       # Creates getter and setter for an attribute
-      def define_attribute_methods(name, options) # :nodoc:       
+      def define_attribute_methods(name, options) # :nodoc:
         define_method name do
           attributes[name] || options[:default]
         end
@@ -85,7 +85,7 @@ module StorageRoom
         @attribute_options ||= {}
       end
 
-      def attribute_options_including_superclasses        
+      def attribute_options_including_superclasses
         hash = attribute_options.dup
         hash.merge!(superclass.attribute_options_including_superclasses) if superclass.respond_to?(:attribute_options_including_superclasses)
 
@@ -94,45 +94,45 @@ module StorageRoom
     end
 
     # Optionally pass attributes to set up the object
-    def initialize(hash={})     
+    def initialize(hash={})
       self.attributes = hash
     end
-          
-    # Shortcut to get an attribute. 
+
+    # Shortcut to get an attribute.
     def [](name)
       self.response_data[name]
     end
-      
+
     # Takes a response data hash, saves it in the record and initializes the class from the response data
     def set_from_response_data(hash)
       self.response_data = hash
       self.initialize_from_response_data
       self
     end
-      
+
     # Return all of the objects attributes
     def response_data
       @_response_data ||= Hash.new.with_indifferent_access
     end
-  
+
     # Set the objects attributes with a hash. Only attributes passed in the hash are changed, existing ones are not overridden.
     def response_data=(hash = {})
       response_data.merge!(hash)
     end
-    
+
     # The attributes as they were defined with key, one, many
     def attributes
       @_attributes ||= Hash.new.with_indifferent_access
     end
-  
+
     def attributes=(args = {})
       attributes.merge!(args)
     end
-    
+
     def as_json(args = {}) # :nodoc:
       to_hash(args)
     end
-    
+
     # ActiveSupport seemed to cause problems when just using as_json, so using to_hash
     def to_hash(args = {}) # :nodoc:
       args ||= {}
@@ -149,46 +149,46 @@ module StorageRoom
           value
         end
       end
-      
+
       hash
     end
-              
+
     def inspect # :nodoc:
       body = attributes.map{|k, v| "#{k}: #{attribute_for_inspect(v)}"}.join(', ')
-      "#<#{self.class} #{body}>"        
+      "#<#{self.class} #{body}>"
     end
-              
+
     # Reset an object to its initial state with all attributes unset
     def reset!
       @_response_data = Hash.new.with_indifferent_access
       @_attributes = Hash.new.with_indifferent_access
       true
     end
-  
+
     # Has a Resource been loaded from the API
     def loaded?
       self.response_data.present?
     end
-    
+
     def proxy? # :nodoc:
       false
     end
-    
+
     # Compare Resources by comparing their attributes
     def eql?(object)
       self.class.equal?(object.class) && attributes == object.attributes
     end
-    
-    alias == eql?  
-    
+
+    alias == eql?
+
     def hash
       self.class.hash ^ self.attributes.hash
     end
-    
+
     protected
       # Helper to not call to_hash with the wrong number of arguments
       def call_method_with_optional_parameters(object, method_name, parameters)
-        if object.respond_to?(method_name) 
+        if object.respond_to?(method_name)
           if object.method(method_name).arity == -1
             object.send(method_name, parameters)
           else
@@ -196,7 +196,7 @@ module StorageRoom
           end
         end
       end
-    
+
       # Iterate over the response data and initialize the attributes
       def initialize_from_response_data # :nodoc:
         _run_initialize_from_response_data_callbacks do
@@ -216,7 +216,7 @@ module StorageRoom
           end
         end
       end
-      
+
       def ensure_loaded # :nodoc:
         if loaded?
           yield if block_given?
@@ -224,7 +224,7 @@ module StorageRoom
           raise StorageRoom::ResourceNotLoadedError
         end
       end
-      
+
       def attribute_for_inspect(value) # :nodoc:
         if value.is_a?(String) && value.length > 50
           "#{value[0..50]}...".inspect
@@ -235,8 +235,8 @@ module StorageRoom
         end
       end
   end
-  
-  
-    
-  
+
+
+
+
 end
