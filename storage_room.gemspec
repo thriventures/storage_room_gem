@@ -9,14 +9,15 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
   s.authors = ["Sascha Konietzke"]
   s.email = "sascha@thriventures.com"
-  s.homepage = "http://github.com/thriventures/storage_room_gem"  
+  s.homepage = "http://github.com/thriventures/storage_room_gem"
   s.summary = "StorageRoom API Wrapper (ActiveModel style)"
   s.description = "StorageRoom is a CMS system for Mobile Applications (iPhone, Android, BlackBerry, ...). This library gives you an ActiveModel-like interface to your data."
-  
+
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
 
   s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
   s.add_development_dependency(%q<webmock>, [">= 0"])
+  s.add_runtime_dependency(%q<rake>)
   s.add_runtime_dependency(%q<json>, [">= 0"])
   s.add_runtime_dependency(%q<httparty>, [">= 0.6.1"])
   s.add_runtime_dependency(%q<activesupport>, [">= 3.1.0"])
